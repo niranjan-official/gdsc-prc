@@ -1,5 +1,5 @@
 import React from "react";
-import { Background } from "../ui/Background";
+import { DotBackground } from "../ui/DotBackground";
 
 const About = () => {
   const fields = [
@@ -23,7 +23,7 @@ const About = () => {
 
   return (
     <section id="about" className="w-full h-max pt-8">
-      <Background type="dot">
+      <DotBackground>
         <div className="w-full flex flex-col items-center px-4 md:px-20 py-8">
           <h1 className="text-5xl md:text-6xl text-center font-extrabold">
             WHAT WE DO HERE ?
@@ -52,7 +52,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </Background>
+      </DotBackground>
     </section>
   );
 };
