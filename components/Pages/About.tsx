@@ -24,7 +24,7 @@ const About = () => {
   return (
     <section id="about" className="w-full h-max pt-8">
       <DotBackground>
-        <div className="w-full flex flex-col items-center px-4 md:px-20 py-8">
+        <div className="w-full flex flex-col items-center px-4 md:px-24 py-8">
           <h1 className="text-5xl md:text-6xl text-center font-extrabold">
             WHAT WE DO HERE ?
           </h1>
