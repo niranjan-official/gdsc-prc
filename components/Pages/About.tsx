@@ -25,7 +25,7 @@ const About = () => {
     <section id="about" className="w-full h-max pt-8">
       <DotBackground>
         <div className="w-full flex flex-col items-center px-4 md:px-24 py-8">
-          <h1 className="text-5xl md:text-6xl text-center font-extrabold">
+          <h1 className="text-5xl md:text-6xl text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-neutral-500 via-neutral-200 to-neutral-500">
             WHAT WE DO HERE ?
           </h1>
           <p className="text-center mt-6 text-xl text-neutral-300">
