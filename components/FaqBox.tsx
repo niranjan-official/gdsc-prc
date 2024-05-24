@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 
 interface FAQ {
-  question: string;
-  answer: string;
+  question: ReactNode;
+  answer: ReactNode;
   setIsActive: any;
   index: number;
   activeElement: number;

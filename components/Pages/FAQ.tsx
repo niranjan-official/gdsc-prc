@@ -1,27 +1,80 @@
 "use client";
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import FaqBox from "../FaqBox";
+import GDSC from "../GDSC";
 
-const faqs = [
+interface Faq {
+  que: ReactNode;
+  ans: ReactNode;
+}
+
+const faqs: Faq[] = [
   {
-    que: "What is Google Developer Student Clubs (GDSC)?",
-    ans: "GDSC are university-based community groups for students interested in Google developer technologies, providing a platform to grow and build solutions together.",
+    que: (
+      <>
+        What is Google Developer Student Clubs ( <GDSC /> ) ?
+      </>
+    ),
+    ans: (
+      <>
+        <GDSC /> are university-based community groups for students interested
+        in Google developer technologies, providing a platform to grow and build
+        solutions together.
+      </>
+    ),
   },
   {
-    que: "Who can join GDSC?",
-    ans: "GDSC is open to all university students, regardless of major or technical skill level. Beginners and experienced developers are welcome.",
+    que: (
+      <>
+        Who can join <GDSC /> ?
+      </>
+    ),
+    ans: (
+      <>
+        <GDSC /> is open to all university students, regardless of major or
+        technical skill level. Beginners and experienced developers are welcome.
+      </>
+    ),
   },
   {
-    que: "How can I join a GDSC chapter?",
-    ans: "Join by finding your university's chapter through social media, the official website, or by attending events. Contact the leadership team for more info.",
+    que: (
+      <>
+        How can I join a <GDSC /> chapter ?
+      </>
+    ),
+    ans: (
+      <>
+        Join by finding your university's chapter through social media, the
+        official website, or by attending events. Contact the leadership team
+        for more info.
+      </>
+    ),
   },
   {
-    que: "What kind of events does GDSC organize?",
-    ans: "GDSC organizes workshops, hackathons, speaker sessions, and study jams covering various tech topics, featuring industry professionals.",
+    que: (
+      <>
+        What kind of events does <GDSC /> organize?
+      </>
+    ),
+    ans: (
+      <>
+        <GDSC /> organizes workshops, hackathons, speaker sessions, and study
+        jams covering various tech topics, featuring industry professionals.
+      </>
+    ),
   },
   {
-    que: "What are the benefits of joining GDSC?",
-    ans: "Gain technical skills, network with peers, work on impactful projects, enhance your resume, and gain leadership experience.",
+    que: (
+      <>
+        What are the benefits of joining <GDSC />?
+      </>
+    ),
+    ans: (
+      <>
+        Gain technical skills, network with peers, work on impactful projects,
+        enhance your resume, and gain leadership experience with <GDSC />.
+      </>
+    ),
   },
 ];
 
@@ -41,6 +94,7 @@ const FAQ = () => {
         <hr className="bordedr-[0.2px] border-neutral-500 mt-8" />
         {faqs.map((faq, index) => (
           <FaqBox
+            key={index}
             question={faq.que}
             answer={faq.ans}
             setIsActive={setIsActive}
