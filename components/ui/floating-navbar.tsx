@@ -28,12 +28,12 @@ const navItems = [
     },
     {
       name: "Team",
-      link: "/team",
+      link: "#team",
       icon: <IconUsersGroup className="h-5 w-5 text-neutral-500 dark:text-white" />,
     },
     {
-      name: "Contact",
-      link: "/contact",
+      name: "FAQ",
+      link: "#faq",
       icon: (
         <IconMessage className="h-5 w-5 text-neutral-500 dark:text-white" />
       ),

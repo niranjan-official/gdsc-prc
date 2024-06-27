@@ -1,5 +1,11 @@
+'use client'
 import Image from "next/image";
 import React from "react";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Meteors, Icon } from "./ui/meteors";
+import { FaInstagram, FaLinkedin } from "react-icons/fa6";
+import { IoMdMailOpen } from "react-icons/io";
 
 interface TeamMemberCard {
   name: string;
@@ -8,20 +14,64 @@ interface TeamMemberCard {
 }
 
 const TeamMemberCard = ({ name, designation, image }: TeamMemberCard) => {
+  const [isHovered, setIsHovered] = useState(false);
   return (
-    <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 flex flex-col text-center">
-      <div className="w-full aspect-square rounded-full bg-gray-500 overflow-hidden p-2">
-        <Image
-          src={image}
-          width={4090}
-          height={400}
-          style={{ height: "100%", width: "100%" }}
-          className="rounded-full"
-          alt={name}
-        />
+    <div className="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 flex flex-col bg-black border border-black/[0.2] dark:border-white/[0.2] p-3 relative">
+      <motion.div
+        className="w-full aspect-square relative preserve-3d"
+        onTap={() => setIsHovered(!isHovered)}
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+        animate={{ rotateY: isHovered ? 180 : 0 }}
+        transition={{ duration: 1, ease: 'easeInOut' }}
+      >
+        <div className="absolute inset-0 backface-hidden">
+          <div className="w-full h-full bg-neutral-300 shadow-md rounded-2xl overflow-hidden">
+            <Image
+              src={image}
+              width={400}
+              height={400}
+              style={{ height: '100%', width: '100%' }}
+              alt={name}
+            />
+          </div>
+        </div>
+        <div className="absolute inset-0 backface-hidden rotate-y-180">
+          <div className="w-full h-full bg-zinc-800 rounded-3xl shadow-md overflow-hidden flex items-center justify-center">
+            <div className="flex items-center gap-3 text-white">
+            <a href="#">
+                    <FaInstagram size={25} />
+                </a>
+                <a href="#">
+                    <FaLinkedin size={25} />
+                </a>
+                <a href="#">
+                    <IoMdMailOpen size={25} />
+                </a>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+      <div className="w-full pl-1 pt-3 bg-black relative overflow-hidden">
+        <p className="text-neutral-300 text-sm">{designation}</p>
+        <h5 className="text-lg uppercase font-semibold">{name}</h5>
+        <div className="w-full flex justify-between" >
+        <span>&lt;/&gt;</span>
+        <span className="text-neutral-300" >2023</span>
+        </div>
+        <Meteors number={20} />
       </div>
-      <h5 className="mt-4 font-semibold uppercase">{name}</h5>
-      <span className="text-neutral-300">{designation}</span>
+      {/* <Image
+        src="/images/icons/gdsc-core.svg"
+        width={60}
+        height={60}
+        alt="..."
+        className="absolute bottom-[5rem] right-8 bg-white rounded-full"
+      /> */}
+      <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
+      <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
+      <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />
+      <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
     </div>
   );
 };

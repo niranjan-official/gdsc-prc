@@ -7,7 +7,7 @@ import Link from "next/link";
 const Team = () => {
   return (
     <DotBackground>
-      <section className="w-full h-max py-8 px-4 md:px-16">
+      <section id="team" className="w-full h-max py-8 px-4 md:px-16">
         <h1 className="text-5xl md:text-6xl text-center font-extrabold">
           Our Team
         </h1>

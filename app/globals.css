@@ -2,10 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-
-html{
+html {
   scroll-behavior: smooth;
 }
-.border-line{
-    -webkit-text-stroke: 1px #FFFFFF;
-  }
+.border-line {
+  -webkit-text-stroke: 1px #ffffff;
+}
+.c1 {
+  width: 230px;
+  height: 250px;
+  background-color: #fff;
+  clip-path: path(
+    "M1 20.5V192.506C1 203.552 9.95429 212.506 21 212.506H123.764C134.255 212.506 142.761 221.011 142.761 231.503C142.761 241.995 151.266 250.5 161.758 250.5H181.88H201C212.046 250.5 221 241.546 221 230.5V20.5C221 9.4543 212.046 0.5 201 0.5H21C9.95431 0.5 1 9.45432 1 20.5Z"
+  );
+}
+.c2 {
+  width: 230px;
+  height: 130px;
+  /* box-shadow: rgba(255, 255, 255, 0.12) 0px 2px 4px 0px, rgba(255, 255, 255, 0.32) 0px 2px 16px 0px; */
+  clip-path: path(
+    "M1 111V21C1 9.95431 9.95431 1 21 1H106.975C118.021 1 126.975 9.9543 126.975 21V22.3636C126.975 33.4093 135.929 42.3636 146.975 42.3636H173.531H201C212.046 42.3636 221 51.3179 221 62.3636V111C221 122.046 212.046 131 201 131H21C9.95431 131 1 122.046 1 111Z"
+  );
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
