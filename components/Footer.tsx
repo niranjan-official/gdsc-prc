@@ -5,7 +5,7 @@ import { IoMdMailOpen } from "react-icons/io";
 
 const Footer = () => {
   return (
-    <div className="w-full flex flex-col gap-4 md:gap-8 border-t border-neutral-500 px-4 sm:px-10 lg:px-16 py-6">
+    <div className="w-full flex flex-col gap-4 md:gap-8 bg-black border-t border-neutral-500 px-4 sm:px-10 lg:px-16 py-6">
       <div className="flex flex-col md:flex-row justify-between gap-4">
         <div className="flex flex-col">
           <div className="flex md:flex-row flex-col gap-2 md:items-start items-center">

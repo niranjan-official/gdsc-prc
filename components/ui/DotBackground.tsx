@@ -8,7 +8,7 @@ interface BackgroundProps {
 export function DotBackground({ children, shadow }: BackgroundProps) {
   return (
     <div
-      className={`w-full h-full dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex flex-col items-center justify-center`}
+      className={`w-full h-full dark:bg-dot-white/[0.3] bg-dot-black/[0.2] relative flex flex-col items-center justify-center`}
     >
       {/* Radial gradient for the container to give a faded look */}
       {shadow && (

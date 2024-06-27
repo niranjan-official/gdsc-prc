@@ -3,6 +3,7 @@ import About from "@/components/Pages/About";
 import Events from "@/components/Pages/Events";
 import Hero from "@/components/Pages/Hero";
 import FAQ from "@/components/Pages/FAQ";
+import Team from "@/components/Pages/Team";
 
 export default function Home() {
   return (
@@ -10,8 +11,8 @@ export default function Home() {
       <Hero/>
       <About/>
       <Events/>
+      <Team/>
       <FAQ/>
-      <Footer/>
     </div>
   );
 }

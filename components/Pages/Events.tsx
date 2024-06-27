@@ -1,9 +1,8 @@
 import React from "react";
 import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
 import { DiGithubBadge } from "react-icons/di";
-import { PiTreasureChestFill } from "react-icons/pi";
 import { SiGooglecloud } from "react-icons/si";
-import { FaCss3, FaHtml5, FaTrophy } from "react-icons/fa6";
+import { FaCss3, FaHtml5 } from "react-icons/fa6";
 import { TbUniverse } from "react-icons/tb";
 import Image from "next/image";
 
@@ -30,8 +29,6 @@ const SkeletonFive = () => (
     <Image src={'/images/posters/webDev.jpg'} width={500} height={400} style={{width:'100%',height:'auto'}} alt="1" />
   </div>
 );
-
-
 
 const Events = () => {
   const items = [
@@ -70,7 +67,7 @@ const Events = () => {
   return (
     <section
       id="events"
-      className="w-full flex flex-col items-center h-max px-4 py-8 pt-20"
+      className="w-full flex flex-col items-center h-max px-4 py-20"
     >
       <h1 className="text-4xl md:text-6xl text-center font-extrabold">
         Our Past Events

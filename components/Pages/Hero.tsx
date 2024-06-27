@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/Button";
 import { GridBackground } from "@/components/ui/GridBackground";
-import { FloatingNav } from "@/components/ui/floating-navbar";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 import { FaPaperPlane } from "react-icons/fa6";
 
@@ -8,7 +7,6 @@ export default function Hero() {
   return (
     <section id="hero" className="h-screen flex flex-col items-center sm:pt-20 select-none">
       <GridBackground shadow>
-        <FloatingNav />
         <div className="flex flex-col items-center">
           <h1 className="text-6xl sm:text-8xl lg:text-9xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
             GDSC PRC
