@@ -98,9 +98,8 @@ const FAQ = () => {
         </FadeUp>
         <hr className="bordedr-[0.2px] border-neutral-500 mt-8" />
         {faqs.map((faq, index) => (
-          <FadeUp>
+          <FadeUp key={index}>
             <FaqBox
-              key={index}
               question={faq.que}
               answer={faq.ans}
               setIsActive={setIsActive}

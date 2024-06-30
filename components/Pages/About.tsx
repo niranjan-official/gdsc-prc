@@ -50,9 +50,8 @@ const About = () => {
           </FadeUp>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 justify-around px-6 mt-8">
             {fields.map((field, key) => (
-              <FadeUp>
+              <FadeUp key={key}>
                 <div
-                  key={key}
                   className={`w-full text-lg p-3 text-center font-bold rounded-lg ${field.class} rounded-xl`}
                 >
                   <h3>{field.title}</h3>

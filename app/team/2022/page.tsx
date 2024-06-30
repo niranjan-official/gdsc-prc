@@ -16,9 +16,8 @@ const page = () => {
       </FadeUp>
       <div className="w-full flex justify-center flex-wrap gap-12 max-sm:gap-8 mt-8 z-20 px-3">
         {Team_2022.map((member) => (
-          <FadeUp>
+          <FadeUp key={member.id} >
             <TeamMemberCard
-              key={member.id}
               name={member.name}
               designation={member.designation}
               image={member.image}
