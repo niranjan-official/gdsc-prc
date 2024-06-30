@@ -12,7 +12,6 @@ const Team = () => {
           </h1>
           <div className="flex flex-col text-gray-300 text-center md:text-lg mt-4 mb-6">
             <p>" Indivitually, we are one drop. Together, we are an ocean " <br className="hidden sm:block" /> -Ryunosuke Satoro</p>
-            {/* <span>-Ryunosuke Satoro</span> */}
           </div>
           <TimeLine />
         </div>

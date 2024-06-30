@@ -1,6 +1,6 @@
 import React from "react";
 import { TeamList } from "./TeamList";
-import { MembersMiniList2023 } from "@/constants";
+import { MembersMiniList2023, Team_2022 } from "@/constants";
 import Link from "next/link";
 import { BiCurrentLocation } from "react-icons/bi";
 
@@ -15,7 +15,7 @@ const TimeLine = () => {
     {
       tenure: "2022-2023",
       year: "2022",
-      membersMiniList: MembersMiniList2023,
+      membersMiniList: Team_2022,
       color: "gdsc-2",
     },
     {
