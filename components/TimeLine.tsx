@@ -1,8 +1,10 @@
+'use client'
 import React from "react";
 import { TeamList } from "./TeamList";
 import { MembersMiniList2023, Team_2022 } from "@/constants";
 import Link from "next/link";
 import { BiCurrentLocation } from "react-icons/bi";
+import { motion } from "framer-motion";
 
 const TimeLine = () => {
   const timelineData = [
@@ -59,8 +61,7 @@ const TimeLine = () => {
                       </svg>
                     )}
                   </div>
-                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] flex flex-col items-center border border-[rgba(255,255,255,0.10)] dark:bg-[rgba(40,40,40,0.70)] bg-gray-100 shadow-[2px_4px_16px_0px_rgba(248,248,248,0.06)_inset] p-4 rounded relative before:absolute before:top-1/2 before:transform before:-translate-y-1/2 before:content-[''] before:border-8 before:border-transparent before:border-r-white md:group-odd:before:-left-4 md:group-even:before:-right-4">
-                   
+                    <motion.div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] flex flex-col items-center border border-[rgba(255,255,255,0.10)] dark:bg-[rgba(40,40,40,0.70)] bg-gray-100 shadow-[2px_4px_16px_0px_rgba(248,248,248,0.06)_inset] p-4 rounded relative before:absolute before:top-1/2 before:transform before:-translate-y-1/2 before:content-[''] before:border-8 before:border-transparent before:border-r-white md:group-odd:before:-left-4 md:group-even:before:-right-4">
                       <time
                         className={` font-semibold text-${item.color}
                       `}
@@ -76,13 +77,11 @@ const TimeLine = () => {
                       >
                         View Team
                       </Link>
-        
-                  </div>
+                    </motion.div>
                 </div>
               );
             })}
           </div>
-          {/* End: Vertical Timeline */}
         </div>
       </div>
     </div>

@@ -5,28 +5,53 @@ import { SiGooglecloud } from "react-icons/si";
 import { FaCss3, FaHtml5 } from "react-icons/fa6";
 import { TbUniverse } from "react-icons/tb";
 import Image from "next/image";
+import FadeUp from "@/Animations/FadeUp";
 
 const Skeleton = () => (
   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
 );
 const SkeletonOne = () => (
   <div className="flex flex-1 w-full h-auto min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100 overflow-hidden">
-    <Image src={'/images/posters/googleCloud.jpg'} width={500} height={400} style={{width:'100%',height:'auto'}} alt="1" />
+    <Image
+      src={"/images/posters/googleCloud.jpg"}
+      width={500}
+      height={400}
+      style={{ width: "100%", height: "auto" }}
+      alt="1"
+    />
   </div>
 );
 const SkeletonTwo = () => (
   <div className="flex flex-1 w-full h-auto min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100 overflow-hidden">
-    <Image src={'/images/posters/versionVenture.jpg'} width={500} height={400} style={{width:'100%',height:'auto'}} alt="1" />
+    <Image
+      src={"/images/posters/versionVenture.jpg"}
+      width={500}
+      height={400}
+      style={{ width: "100%", height: "auto" }}
+      alt="1"
+    />
   </div>
 );
 const SkeletonFour = () => (
   <div className="flex flex-1 w-full h-auto min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100 overflow-hidden">
-    <Image src={'/images/posters/pieverse.jpg'} width={500} height={400} style={{width:'100%',height:'auto'}} alt="1" />
+    <Image
+      src={"/images/posters/pieverse.jpg"}
+      width={500}
+      height={400}
+      style={{ width: "100%", height: "auto" }}
+      alt="1"
+    />
   </div>
 );
 const SkeletonFive = () => (
   <div className="flex flex-1 w-full h-auto min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100 overflow-hidden">
-    <Image src={'/images/posters/webDev.jpg'} width={500} height={400} style={{width:'100%',height:'auto'}} alt="1" />
+    <Image
+      src={"/images/posters/webDev.jpg"}
+      width={500}
+      height={400}
+      style={{ width: "100%", height: "auto" }}
+      alt="1"
+    />
   </div>
 );
 
@@ -48,7 +73,7 @@ const Events = () => {
       title: "Liquid Layout",
       description: "Discover the beauty of responsiveness in web design.",
       header: <Skeleton />,
-      icon: <FaCss3 className="h-4 w-4 text-neutral-500" />
+      icon: <FaCss3 className="h-4 w-4 text-neutral-500" />,
     },
     {
       title: "Pieverse",
@@ -58,8 +83,7 @@ const Events = () => {
     },
     {
       title: "Web Development Workshop",
-      description:
-        "3-Day online workshop on basic Web development.",
+      description: "3-Day online workshop on basic Web development.",
       header: <SkeletonFive />,
       icon: <FaHtml5 className="h-4 w-4 text-neutral-500" />,
     },
@@ -69,13 +93,17 @@ const Events = () => {
       id="events"
       className="w-full flex flex-col items-center h-max px-4 py-20"
     >
-      <h1 className="text-4xl md:text-6xl text-center font-extrabold">
-        Our Past Events
-      </h1>
-      <p className="mt-4 my-8 text-center text-gray-300 max-w-3xl md:px-12 lg:px-20">
-        Discover our latest events, workshops, and hackathons. Join us to learn,
-        network, and innovate with fellow developers.
-      </p>
+      <FadeUp>
+        <h1 className="text-4xl md:text-6xl text-center font-extrabold">
+          Our Past Events
+        </h1>
+      </FadeUp>
+      <FadeUp>
+        <p className="mt-4 my-8 text-center text-gray-300 max-w-3xl md:px-12 lg:px-20">
+          Discover our latest events, workshops, and hackathons. Join us to
+          learn, network, and innovate with fellow developers.
+        </p>
+      </FadeUp>
       <BentoGrid className="w-full mx-auto">
         {items.map((item, i) => (
           <BentoGridItem

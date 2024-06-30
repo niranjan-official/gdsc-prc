@@ -13,9 +13,9 @@ export const MembersMiniList2023 = [
   },
   {
     id: 3,
-    name: "Jittu Susan",
-    designation: "Outreach Lead",
-    image: "/images/team/2023/jittu.jpg",
+    name: "Sara Biji",
+    designation: "Flutter Lead",
+    image: "/images/team/2023/sara.jpg",
   },
   {
     id: 4,

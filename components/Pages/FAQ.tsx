@@ -2,6 +2,7 @@
 import React, { ReactNode, useState } from "react";
 import FaqBox from "../FaqBox";
 import GDSC from "../GDSC";
+import FadeUp from "@/Animations/FadeUp";
 
 interface Faq {
   que: ReactNode;
@@ -85,22 +86,28 @@ const FAQ = () => {
       id="faq"
       className="w-full flex flex-col h-max px-4 md:px-24 py-8 pt-20"
     >
-      <h3 className="text-4xl font-extrabold max-sm:text-center">FAQs</h3>
+      <FadeUp>
+        <h3 className="text-4xl font-extrabold max-sm:text-center">FAQs</h3>
+      </FadeUp>
       <div className="w-full flex flex-col mt-4">
-        <p className="text-gray-300 max-sm:text-center">
-          Find answers to common questions about our digital marketing, web
-          development and graphic design services.
-        </p>
+        <FadeUp>
+          <p className="text-gray-300 max-sm:text-center">
+            Find answers to common questions about our digital marketing, web
+            development and graphic design services.
+          </p>
+        </FadeUp>
         <hr className="bordedr-[0.2px] border-neutral-500 mt-8" />
         {faqs.map((faq, index) => (
-          <FaqBox
-            key={index}
-            question={faq.que}
-            answer={faq.ans}
-            setIsActive={setIsActive}
-            index={index}
-            activeElement={isActive}
-          />
+          <FadeUp>
+            <FaqBox
+              key={index}
+              question={faq.que}
+              answer={faq.ans}
+              setIsActive={setIsActive}
+              index={index}
+              activeElement={isActive}
+            />
+          </FadeUp>
         ))}
       </div>
     </section>
