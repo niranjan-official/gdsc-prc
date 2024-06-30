@@ -28,7 +28,7 @@ const TeamMemberCard = ({ name, designation, image }: TeamMemberCard) => {
         <div className="absolute inset-0 backface-hidden">
           <div className="w-full h-full bg-neutral-300 shadow-md rounded-2xl overflow-hidden">
             <Image
-              src={image}
+              src={image? image : '/images/team/skeleton.jpg'}
               width={400}
               height={400}
               style={{ height: '100%', width: '100%' }}
@@ -61,13 +61,6 @@ const TeamMemberCard = ({ name, designation, image }: TeamMemberCard) => {
         </div>
         <Meteors number={20} />
       </div>
-      {/* <Image
-        src="/images/icons/gdsc-core.svg"
-        width={60}
-        height={60}
-        alt="..."
-        className="absolute bottom-[5rem] right-8 bg-white rounded-full"
-      /> */}
       <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
       <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
       <Icon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-black" />

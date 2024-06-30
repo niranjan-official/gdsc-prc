@@ -72,7 +72,7 @@ const Events = () => {
       <h1 className="text-4xl md:text-6xl text-center font-extrabold">
         Our Past Events
       </h1>
-      <p className="my-4 text-center text-gray-300 max-w-3xl">
+      <p className="mt-4 my-8 text-center text-gray-300 max-w-3xl md:px-12 lg:px-20">
         Discover our latest events, workshops, and hackathons. Join us to learn,
         network, and innovate with fellow developers.
       </p>
