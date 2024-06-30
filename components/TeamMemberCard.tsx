@@ -21,7 +21,7 @@ const TeamMemberCard = ({ name, designation, image }: TeamMemberCard) => {
       whileInView={{ y: 0, opacity: 1, scale: [1, 1.05, 1] }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
       whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       className="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 flex flex-col bg-black border border-black/[0.2] dark:border-white/[0.2] p-3 relative"
     >
       <motion.div

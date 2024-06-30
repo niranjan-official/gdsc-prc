@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import { TeamList } from "./TeamList";
 import { MembersMiniList2023, Team_2022 } from "@/constants";
@@ -61,23 +61,40 @@ const TimeLine = () => {
                       </svg>
                     )}
                   </div>
-                    <motion.div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] flex flex-col items-center border border-[rgba(255,255,255,0.10)] dark:bg-[rgba(40,40,40,0.70)] bg-gray-100 shadow-[2px_4px_16px_0px_rgba(248,248,248,0.06)_inset] p-4 rounded relative before:absolute before:top-1/2 before:transform before:-translate-y-1/2 before:content-[''] before:border-8 before:border-transparent before:border-r-white md:group-odd:before:-left-4 md:group-even:before:-right-4">
-                      <time
-                        className={` font-semibold text-${item.color}
+                  <motion.div
+                    initial={{ y: 40, opacity: 0, scale: 0.9 }}
+                    whileInView={{
+                      y: [40, -10, 0],
+                      opacity: 1,
+                      scale: 1,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 25,
+                      duration: 1.2,
+                      delayChildren: 0.3,
+                      staggerChildren: 0.2,
+                    }}
+                    viewport={{ once: true }}
+                    className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] flex flex-col items-center border border-[rgba(255,255,255,0.10)] dark:bg-[rgba(40,40,40,0.70)] bg-gray-100 shadow-[2px_4px_16px_0px_rgba(248,248,248,0.06)_inset] p-4 rounded relative before:absolute before:top-1/2 before:transform before:-translate-y-1/2 before:content-[''] before:border-8 before:border-transparent before:border-r-white md:group-odd:before:-left-4 md:group-even:before:-right-4"
+                  >
+                    <time
+                      className={` font-semibold text-${item.color}
                       `}
-                      >
-                        {item.tenure}
-                      </time>
-                      <div className="w-full flex flex-row items-center justify-center my-3 pr-4">
-                        <TeamList items={item.membersMiniList} />
-                      </div>
-                      <Link
-                        href={`/team/${item.year}`}
-                        className="p-2 mt-2 border border-white hover:bg-white/10 rounded-3xl px-4 w-fit"
-                      >
-                        View Team
-                      </Link>
-                    </motion.div>
+                    >
+                      {item.tenure}
+                    </time>
+                    <div className="w-full flex flex-row items-center justify-center my-3 pr-4">
+                      <TeamList items={item.membersMiniList} />
+                    </div>
+                    <Link
+                      href={`/team/${item.year}`}
+                      className="p-2 mt-2 border border-white hover:bg-white/10 rounded-3xl px-4 w-fit"
+                    >
+                      View Team
+                    </Link>
+                  </motion.div>
                 </div>
               );
             })}

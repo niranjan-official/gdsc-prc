@@ -27,7 +27,7 @@ const About = () => {
       <DotBackground>
         <div className="w-full flex flex-col items-center px-4 md:px-24 py-8">
           <FadeUp>
-            <h1 className="text-5xl md:text-6xl text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-neutral-500 via-neutral-200 to-neutral-500">
+            <h1 className="text-4xl md:text-6xl text-center font-extrabold text-white">
               WHAT WE DO HERE ?
             </h1>
           </FadeUp>
