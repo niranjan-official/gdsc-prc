@@ -7,9 +7,6 @@ import { TbUniverse } from "react-icons/tb";
 import Image from "next/image";
 import FadeUp from "@/Animations/FadeUp";
 
-const Skeleton = () => (
-  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
-);
 const SkeletonOne = () => (
   <div className="flex flex-1 w-full h-auto min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100 overflow-hidden">
     <Image
@@ -30,6 +27,17 @@ const SkeletonTwo = () => (
       style={{ width: "100%", height: "auto" }}
       alt="1"
     />
+  </div>
+);
+const SkeletonThree = () => (
+  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100 overflow-hidden">
+    <Image
+      src={"/images/posters/liquidLayout.jpg"}
+      width={500}
+      height={400}
+      style={{ width: "100%", height: "auto" }}
+      alt="1"
+    />{" "}
   </div>
 );
 const SkeletonFour = () => (
@@ -72,7 +80,7 @@ const Events = () => {
     {
       title: "Liquid Layout",
       description: "Discover the beauty of responsiveness in web design.",
-      header: <Skeleton />,
+      header: <SkeletonThree />,
       icon: <FaCss3 className="h-4 w-4 text-neutral-500" />,
     },
     {

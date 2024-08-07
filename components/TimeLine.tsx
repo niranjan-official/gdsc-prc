@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { TeamList } from "./TeamList";
-import { MembersMiniList2023, Team_2022 } from "@/constants";
+import { MembersMiniList2023, Team_2020, Team_2022 } from "@/constants";
 import Link from "next/link";
 import { BiCurrentLocation } from "react-icons/bi";
 import { motion } from "framer-motion";
@@ -11,20 +11,23 @@ const TimeLine = () => {
     {
       tenure: "2020-2021",
       year: "2020",
-      membersMiniList: MembersMiniList2023,
+      membersMiniList: Team_2020,
       color: "gdsc-1",
+      team: false,
     },
     {
       tenure: "2022-2023",
       year: "2022",
       membersMiniList: Team_2022,
       color: "gdsc-2",
+      team: true,
     },
     {
       tenure: "2023-2024",
       year: "2023",
       membersMiniList: MembersMiniList2023,
       color: "gdsc-3",
+      team: true,
     },
   ];
 
@@ -88,12 +91,16 @@ const TimeLine = () => {
                     <div className="w-full flex flex-row items-center justify-center my-3 pr-4">
                       <TeamList items={item.membersMiniList} />
                     </div>
-                    <Link
-                      href={`/team/${item.year}`}
-                      className="p-2 mt-2 border border-white hover:bg-white/10 rounded-3xl px-4 w-fit"
-                    >
-                      View Team
-                    </Link>
+                    {item.team ? (
+                      <Link
+                        href={`/team/${item.year}`}
+                        className="p-2 mt-2 border border-white hover:bg-white/10 rounded-3xl px-4 w-fit"
+                      >
+                        View Team
+                      </Link>
+                    ):(
+                      <span className="font-semibold mt-1">FOUNDER: GDSC-PRC</span>
+                    )}
                   </motion.div>
                 </div>
               );

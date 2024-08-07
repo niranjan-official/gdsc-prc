@@ -106,6 +106,15 @@ export const MembersMiniList2023 = [
     },
   ]
 
+  export const Team_2020 = [
+    {
+      id: 1,
+      name: "Jobin Ayathil",
+      designation: "GDSC Lead",
+      image: "/images/team/2020/jobin.jpg",
+    }
+  ]
+
   export const Team_2022 = [
     {
       id: 1,
