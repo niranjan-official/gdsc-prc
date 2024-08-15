@@ -43,7 +43,7 @@ const Footer = () => {
 
         </div>
       </div>
-      <div className="flex flex-col text-center text-xs">
+      <div className="flex flex-col text-center text-xs text-white">
         <p>© Copyright GDSC-PRC. All Rights Reserved</p>
         <span>❤️ Design by <span className="font-semibold" >GDSC PRC</span> Team</span>
       </div>

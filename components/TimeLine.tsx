@@ -1,42 +1,18 @@
 "use client";
 import React from "react";
 import { TeamList } from "./TeamList";
-import { MembersMiniList2023, Team_2020, Team_2022 } from "@/constants";
 import Link from "next/link";
 import { BiCurrentLocation } from "react-icons/bi";
 import { motion } from "framer-motion";
+import { TimelineData } from "@/constants";
 
 const TimeLine = () => {
-  const timelineData = [
-    {
-      tenure: "2020-2021",
-      year: "2020",
-      membersMiniList: Team_2020,
-      color: "gdsc-1",
-      team: false,
-    },
-    {
-      tenure: "2022-2023",
-      year: "2022",
-      membersMiniList: Team_2022,
-      color: "gdsc-2",
-      team: true,
-    },
-    {
-      tenure: "2023-2024",
-      year: "2023",
-      membersMiniList: MembersMiniList2023,
-      color: "gdsc-3",
-      team: true,
-    },
-  ];
-
   return (
     <div className="w-full mx-auto pl-4 md:px-6">
       <div className="flex flex-col justify-center divide-y divide-slate-200">
         <div className="w-full max-w-3xl mx-auto">
           <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
-            {timelineData.map((item, index) => {
+            {TimelineData.map((team, index) => {
               const isActive = 2;
               return (
                 <div
@@ -83,23 +59,27 @@ const TimeLine = () => {
                     className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] flex flex-col items-center border border-[rgba(255,255,255,0.10)] dark:bg-[rgba(40,40,40,0.70)] bg-gray-100 shadow-[2px_4px_16px_0px_rgba(248,248,248,0.06)_inset] p-4 rounded relative before:absolute before:top-1/2 before:transform before:-translate-y-1/2 before:content-[''] before:border-8 before:border-transparent before:border-r-white md:group-odd:before:-left-4 md:group-even:before:-right-4"
                   >
                     <time
-                      className={` font-semibold text-${item.color}
+                      className={` font-semibold text-${team.color}
                       `}
                     >
-                      {item.tenure}
+                      {team.tenure}
                     </time>
                     <div className="w-full flex flex-row items-center justify-center my-3 pr-4">
-                      <TeamList items={item.membersMiniList} />
+                      <TeamList
+                        items={team.members.filter((member) => member.id <= 6)}
+                      />
                     </div>
-                    {item.team ? (
+                    {team.year === 2020 ? (
+                      <span className="font-semibold mt-1">
+                        FOUNDER: GDSC-PRC
+                      </span>
+                    ) : (
                       <Link
-                        href={`/team/${item.year}`}
+                        href={`/team/${team.year}`}
                         className="p-2 mt-2 border border-white hover:bg-white/10 rounded-3xl px-4 w-fit"
                       >
                         View Team
                       </Link>
-                    ):(
-                      <span className="font-semibold mt-1">FOUNDER: GDSC-PRC</span>
                     )}
                   </motion.div>
                 </div>
