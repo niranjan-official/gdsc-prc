@@ -30,7 +30,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col items-center gap-2">
             <div className="flex gap-4 text-white">
-                <a href="#">
+                <a href="https://www.instagram.com/dsc_providence?igsh=MXFhMm0ybGRqYTQ2MA==">
                     <FaInstagram size={20} />
                 </a>
                 <a href="#">
