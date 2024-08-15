@@ -1,6 +1,7 @@
 import { Timeline } from "@/types";
 import { Team_2020, Team_2022, Team_2023 } from "./Teams";
 
+// Add new Timeline in the end, also import the new team
 export const TimelineData: Timeline[] = [
   {
     tenure: "2020-2021",

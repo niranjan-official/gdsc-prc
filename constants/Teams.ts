@@ -1,6 +1,21 @@
 import { TeamMember } from "@/types";
 
-export const Team_2023 : TeamMember[] = [
+/*
+Add new team in the below format :
+
+export const Team_[YEAR] : TeamMember[] = [
+  {
+    id: ...,
+    name: "...",
+    designation: "...",
+    image: "/images/team/[YEAR]/[...].jpg",
+  },
+  {
+    ...
+  }
+]
+*/
+export const Team_2023: TeamMember[] = [
   {
     id: 1,
     name: "Anand Sudeep",
@@ -81,7 +96,7 @@ export const Team_2023 : TeamMember[] = [
   },
 ];
 
-export const Team_2022 : TeamMember[] = [
+export const Team_2022: TeamMember[] = [
   {
     id: 1,
     name: "Joel Biju",
@@ -125,7 +140,7 @@ export const Team_2022 : TeamMember[] = [
     image: "/images/team/2022/alen.jpg",
   },
 ];
-export const Team_2020 : TeamMember[] = [
+export const Team_2020: TeamMember[] = [
   {
     id: 1,
     name: "Jobin Ayathil",
