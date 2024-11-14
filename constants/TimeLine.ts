@@ -1,5 +1,5 @@
 import { Timeline } from "@/types";
-import { Team_2020, Team_2022, Team_2023 } from "./Teams";
+import { Team_2020, Team_2022, Team_2023, Team_2024 } from "./Teams";
 
 // Add new Timeline in the end, also import the new team
 export const TimelineData: Timeline[] = [
@@ -20,5 +20,11 @@ export const TimelineData: Timeline[] = [
     year: 2023,
     members: Team_2023,
     color: "gdsc-3",
+  },
+  {
+    tenure: "2024-2025",
+    year: 2024,
+    members: Team_2024,
+    color: "gdsc-4",
   },
 ];

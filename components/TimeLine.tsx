@@ -13,12 +13,12 @@ const TimeLine = () => {
         <div className="w-full max-w-3xl mx-auto">
           <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
             {TimelineData.map((team, index) => {
-              const isActive = 2;
+              const isActive = 3;
               return (
                 <div
                   key={index}
                   className={`relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group ${
-                    index === 2 ? "is-active" : ""
+                    index === 3 ? "is-active" : ""
                   }`}
                 >
                   <div

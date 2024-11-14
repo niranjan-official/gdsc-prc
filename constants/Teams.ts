@@ -15,6 +15,86 @@ export const Team_[YEAR] : TeamMember[] = [
   }
 ]
 */
+export const Team_2024: TeamMember[] = [
+  {
+    id: 1,
+    name: "Abin Thomas",
+    designation: "Organizer",
+    image: "/images/team/2024/abin.jpg",
+  },
+  {
+    id: 2,
+    name: "Syamraj B S",
+    designation: "Chapter Advisor",
+    image: "/images/team/2023/syamraj.jpg",
+  },
+  {
+    id: 3,
+    name: "Anand Sudeep",
+    designation: "Community mentor",
+    image: "/images/team/2023/anand.jpg",
+  },
+  {
+    id: 4,
+    name: "Niranjan Sabarinath",
+    designation: "Co-organizer",
+    image: "/images/team/2024/niranjan.jpg",
+  },
+  {
+    id: 5,
+    name: "Abna Praveen P",
+    designation: "Design Facilitator",
+    image: "",
+  },
+  {
+    id: 6,
+    name: "Sanjeev Santhosh",
+    designation: "Design Facilitator",
+    image: "",
+  },
+  {
+    id: 7,
+    name: "Shreya Sreekumar",
+    designation: "Event Facilitator",
+    image: "",
+  },
+  {
+    id: 8,
+    name: "Maheshwar Anup",
+    designation: "Web3 Facilitator",
+    image: "",
+  },
+  {
+    id: 9,
+    name: "Abhijith U",
+    designation: "Media Facilitator",
+    image: "",
+  },
+  {
+    id: 10,
+    name: "Christy John Biju",
+    designation: "Community Facilitator",
+    image: "/images/team/2024/christy.jpg",
+  },
+  {
+    id: 11,
+    name: "Mahadevan R",
+    designation: "Open Source Facilitator",
+    image: "/images/team/2024/mahadevan.jpg",
+  },
+  {
+    id: 12,
+    name: "Shan John",
+    designation: "Flutter Facilitator",
+    image: "/images/team/2023/shan.png",
+  },
+  {
+    id: 13,
+    name: "Angela Aleena Benoy",
+    designation: "Content Facilitator",
+    image: "/images/team/2024/angela.jpg",
+  },
+];
 export const Team_2023: TeamMember[] = [
   {
     id: 1,
