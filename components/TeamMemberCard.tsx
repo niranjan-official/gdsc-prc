@@ -11,9 +11,10 @@ interface TeamMemberCard {
   name: string;
   designation: string;
   image: string;
+  year: string;
 }
 
-const TeamMemberCard = ({ name, designation, image }: TeamMemberCard) => {
+const TeamMemberCard = ({ name, designation, image, year }: TeamMemberCard) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <motion.div
@@ -64,7 +65,7 @@ const TeamMemberCard = ({ name, designation, image }: TeamMemberCard) => {
         <h5 className="text-lg uppercase font-semibold">{name}</h5>
         <div className="w-full flex justify-between">
           <span>&lt;/&gt;</span>
-          <span className="text-neutral-300">2023</span>
+          <span className="text-neutral-300">{year}</span>
         </div>
         <Meteors number={20} />
       </div>

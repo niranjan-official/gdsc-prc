@@ -24,6 +24,7 @@ const page = async ({ params }: { params: { year: string } }) => {
             name={member.name}
             designation={member.designation}
             image={member.image}
+            year={year}
           />
         ))}
       </div>
