@@ -56,7 +56,7 @@ export const Team_2024: TeamMember[] = [
     id: 7,
     name: "Shreya Sreekumar",
     designation: "Event Facilitator",
-    image: "",
+    image: "/images/team/2024/shreya.jpg",
   },
   {
     id: 8,
