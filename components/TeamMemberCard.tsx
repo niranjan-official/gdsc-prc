@@ -11,7 +11,7 @@ interface TeamMemberCard {
   name: string;
   designation: string;
   image: string;
-  year: string;
+  year: number;
 }
 
 const TeamMemberCard = ({ name, designation, image, year }: TeamMemberCard) => {
