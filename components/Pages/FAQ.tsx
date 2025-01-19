@@ -13,7 +13,7 @@ const faqs: Faq[] = [
   {
     que: (
       <>
-        What is Google Developer Student Clubs ( <GDSC /> ) ?
+        What is Google Developer Groups On Campus ( <GDSC /> ) ?
       </>
     ),
     ans: (

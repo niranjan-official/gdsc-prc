@@ -33,7 +33,7 @@ const About = () => {
           </FadeUp>
           <FadeUp>
             <p className="text-center mt-6 text-xl text-neutral-300">
-              We at <span className="font-bold text-gdsc-1">GDSC-PRC</span> are
+              We at <span className="font-bold text-gdsc-1">GDGC-PRC</span> are
               a passionate group of people who work towards bringing a change in
               the ecosystem of{" "}
               <span className="font-bold text-gdsc-2">development</span> around
