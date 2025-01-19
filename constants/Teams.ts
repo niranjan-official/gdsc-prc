@@ -62,7 +62,7 @@ export const Team_2024: TeamMember[] = [
     id: 8,
     name: "Maheshwar Anup",
     designation: "Web3 Facilitator",
-    image: "",
+    image: "/images/team/2024/maheshwar.jpg",
   },
   {
     id: 9,

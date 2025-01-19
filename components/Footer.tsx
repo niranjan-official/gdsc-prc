@@ -20,7 +20,7 @@ const Footer = () => {
             </div>
             <div className="flex flex-col text-neutral-300 md:text-left text-center">
               <h2 className=" text-xl md:text-2xl font-semibold">
-                Google Developer Student Clubs
+                Google Developer Groups
               </h2>
               <h3 className="text-sm">Providence College of Engineering</h3>
               <span className="text-sm">Angadical South, Ala, Kerala</span>
@@ -44,8 +44,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex flex-col text-center text-xs text-white">
-        <p>© Copyright GDSC-PRC. All Rights Reserved</p>
-        <span>❤️ Design by <span className="font-semibold" >GDSC PRC</span> Team</span>
+        <p>© Copyright GDGC-PRC. All Rights Reserved</p>
+        <span>❤️ Design by <span className="font-semibold" >GDGC PRC</span> Team</span>
       </div>
     </div>
   );
