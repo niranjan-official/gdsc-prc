@@ -13,7 +13,7 @@ export default function Hero() {
       <GridBackground shadow>
         <div className="flex flex-col items-center">
           <SlowFade>
-            <h1 className="text-6xl sm:text-8xl lg:text-9xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
+            <h1 className="text-6xl sm:text-8xl lg:text-9xl font-extrabold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
               GDGC PRC
             </h1>
           </SlowFade>
@@ -29,7 +29,7 @@ export default function Hero() {
           </SlowFade>
           <SlowFade delay={1.5}>
             <Button
-              containerClassName="rounded-full"
+              containerClassName="rounded-xl"
               as="button"
               className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 "
             >

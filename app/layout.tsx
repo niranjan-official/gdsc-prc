@@ -4,8 +4,22 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import Footer from "@/components/Footer";
+import localFont from 'next/font/local'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = localFont({
+  src: [
+    {
+      path: './GoogleSans.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './GoogleSans-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+})
 
 export const metadata: Metadata = {
   title: "GDGC PRC",

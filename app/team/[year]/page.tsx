@@ -13,11 +13,13 @@ const page = async ({ params }: { params: { year: string } }) => {
   }
   return (
     <div className="w-full min-h-screen flex flex-col items-center bg-black px-10 md:px-16 lg:px-24 pt-32 pb-10">
-      <h3 className="text-4xl sm:text-6xl font-extrabold z-20">Team Members</h3>
+      <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 relative z-10">
+                Team Members
+              </h2>
       <span className="text-4xl font-extralight mt-2 z-20">
         {year} - {year + 1}
       </span>
-      <div className="w-full flex justify-center flex-wrap gap-12 max-sm:gap-8 mt-8 z-20 px-3">
+      <div className="w-full flex justify-center flex-wrap gap-12 max-sm:gap-8 mt-10 md:mt-20 z-20 px-3">
         {teamData.map((member) => (
           <TeamMemberCard
             key={member.id}

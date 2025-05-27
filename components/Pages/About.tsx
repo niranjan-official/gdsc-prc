@@ -1,68 +1,112 @@
-import React from "react";
-import { DotBackground } from "../ui/DotBackground";
-import FadeUp from "@/Animations/FadeUp";
+"use client"
+import { GridBackground } from "../ui/GridBackground"
+import SlowFade from "@/Animations/SlowFade"
+import { Smartphone, Globe, Brain, Palette } from "lucide-react"
+import { DotBackground } from "../ui/DotBackground"
 
 const About = () => {
   const fields = [
     {
       title: "App Development",
-      class: "bg-gdsc-1/30 text-gdsc-1 hover:bg-gdsc-1/50",
+      icon: Smartphone,
+      gradient: "from-blue-400 to-blue-600",
+      bgGradient: "from-blue-500/10 to-blue-600/5",
+      borderGradient: "from-blue-500/30 to-blue-600/20",
+      iconColor: "96 165 250", // blue-400 RGB
     },
     {
       title: "Web Development",
-      class: "bg-gdsc-2/30 text-gdsc-2 hover:bg-gdsc-2/50",
+      icon: Globe,
+      gradient: "from-green-400 to-green-600",
+      bgGradient: "from-green-500/10 to-green-600/5",
+      borderGradient: "from-green-500/30 to-green-600/20",
+      iconColor: "74 222 128", // green-400 RGB
     },
     {
       title: "AI / ML",
-      class: "bg-gdsc-3/30 text-gdsc-3 hover:bg-gdsc-3/50",
+      icon: Brain,
+      gradient: "from-yellow-400 to-yellow-600",
+      bgGradient: "from-yellow-500/10 to-yellow-600/5",
+      borderGradient: "from-yellow-500/30 to-yellow-600/20",
+      iconColor: "250 204 21", // yellow-400 RGB
     },
     {
       title: "UI / UX",
-      class: "bg-gdsc-4/30 text-gdsc-4 hover:bg-gdsc-4/50",
+      icon: Palette,
+      gradient: "from-orange-400 to-orange-600",
+      bgGradient: "from-orange-500/10 to-orange-600/5",
+      borderGradient: "from-orange-500/30 to-orange-600/20",
+      iconColor: "251 146 60", // orange-400 RGB
     },
-  ];
+  ]
 
   return (
-    <section id="about" className="w-full h-max pt-8">
-      <DotBackground>
-        <div className="w-full flex flex-col items-center px-4 md:px-24 py-8">
-          <FadeUp>
-            <h1 className="text-5xl md:text-6xl text-center font-extrabold text-white">
-              WHAT WE DO HERE ?
-            </h1>
-          </FadeUp>
-          <FadeUp>
-            <p className="text-center mt-6 text-xl text-neutral-300">
-              We at <span className="font-bold text-gdsc-1">GDGC-PRC</span> are
-              a passionate group of people who work towards bringing a change in
-              the ecosystem of{" "}
-              <span className="font-bold text-gdsc-2">development</span> around
-              the campus. We want to create a healthy environment for the
-              budding developers to exploring{" "}
-              <span className="font-bold text-gdsc-3">solutions</span> to real
-              life problems and{" "}
-              <span className="font-bold text-gdsc-4">promote</span> the
-              developer culture.
-            </p>
-          </FadeUp>
-          <FadeUp>
-            <h2 className="mt-6 text-4xl font-extralight">We Work On</h2>
-          </FadeUp>
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 justify-around px-6 mt-8">
-            {fields.map((field, key) => (
-              <FadeUp key={key}>
+    <section id="about" className="min-h-screen flex flex-col items-center justify-center py-10 md:py-24 select-none">
+      <DotBackground shadow>
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="mb-8 md:mb-20 text-center">
+            <SlowFade>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold mb-8 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 relative z-10">
+                What We Do?
+              </h2>
+            </SlowFade>
+            <SlowFade delay={0.3}>
+              <p className="text-lg md:text-xl text-neutral-300 max-w-4xl mx-auto leading-relaxed">
+                We at{" "}
+                <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
+                  GDGC-PRC
+                </span>{" "}
+                are a passionate group of people who work towards bringing a change in the ecosystem of{" "}
+                <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-600">
+                  development
+                </span>{" "}
+                around the campus. We want to create a healthy environment for the budding developers to explore{" "}
+                <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
+                  solutions
+                </span>{" "}
+                to real life problems and{" "}
+                <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600">
+                  promote
+                </span>{" "}
+                the developer culture.
+              </p>
+            </SlowFade>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+            {fields.map((field, index) => (
+              <SlowFade key={index} delay={0.6 + index * 0.2}>
                 <div
-                  className={`w-full text-lg p-3 text-center font-bold rounded-lg ${field.class} rounded-xl`}
+                  className={`group relative p-6 md:p-8 rounded-2xl border bg-gradient-to-br ${field.bgGradient} border-neutral-800 backdrop-blur-sm transition-all duration-500 hover:scale-[1.02] hover:border-neutral-700 cursor-pointer`}
                 >
-                  <h3>{field.title}</h3>
+                  <div className="flex items-center gap-4 md:gap-6">
+                    <div
+                      className={`p-3 md:p-4 rounded-xl bg-gradient-to-br ${field.bgGradient} border border-neutral-700 group-hover:border-neutral-600 transition-all duration-300`}
+                    >
+                      <field.icon
+                        className={`w-6 h-6 md:w-8 md:h-8 stroke-current`}
+                        style={{ color: `rgb(${field.iconColor})` }}
+                      />
+                    </div>
+                    <h3
+                      className={`text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${field.gradient}`}
+                    >
+                      {field.title}
+                    </h3>
+                  </div>
+
+                  {/* Subtle glow effect */}
+                  <div
+                    className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${field.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`}
+                  />
                 </div>
-              </FadeUp>
+              </SlowFade>
             ))}
           </div>
         </div>
       </DotBackground>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About
