@@ -68,7 +68,7 @@ export function Button({
       {...props}
     >
       <a
-        href="https://gdsc.community.dev/providence-college-of-engineering-school-of-business-chengannur-india/"
+        href="https://gdg.community.dev/gdg-on-campus-providence-college-of-engineering-school-of-business-chengannur-india/"
         className={cn(
           "w-auto text-white z-10 bg-black px-4 py-2 rounded-[inherit]",
           className
