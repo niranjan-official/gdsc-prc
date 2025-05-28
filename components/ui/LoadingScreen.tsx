@@ -1,7 +1,5 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 interface LoadingScreenProps {
     onLoadingComplete?: () => void;
@@ -22,7 +20,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
     return (
         <>
             {isLoading && (
-                <div className="w-full h-[80vh] flex justify-center items-center">
+                <div className="w-full h-[90vh] flex justify-center items-center">
                     <div className="loader"></div>
                 </div>
             )}
