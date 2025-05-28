@@ -34,6 +34,7 @@ export const metadata: Metadata = {
         "Tech Events",
         "Programming",
         "Providence",
+        "College",
         "Providence College of Engineering",
     ],
     authors: [{ name: "GDGC PRC Team" }],
