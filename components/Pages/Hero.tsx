@@ -19,17 +19,17 @@ export default function Hero() {
       {isLoaded && (
         <GridBackground shadow>
           <div className="flex flex-col items-center">
-            <SlowFade>
+            <SlowFade delay={1}>
               <h1 className="text-6xl sm:text-8xl lg:text-9xl font-extrabold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
                 GDGC PRC
               </h1>
             </SlowFade>
-            <SlowFade>
+            <SlowFade delay={1}>
               <h2 className="md:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-neutral-500 via-neutral-200 to-neutral-500">
                 Google Developer Groups On Campus
               </h2>
             </SlowFade>
-            <SlowFade>
+            <SlowFade delay={1}>
               <h2 className="max-sm:text-xs bg-clip-text text-transparent bg-gradient-to-r from-neutral-500 via-neutral-200 to-neutral-500">
                 Providence College of Engineering
               </h2>

@@ -5,9 +5,10 @@ import React, { ReactNode } from 'react';
 interface SlowFadeProps {
   children: ReactNode;
   delay?: number;
+  className?: string;
 }
 
-const SlowFade = ({ children, delay = 0 }: SlowFadeProps) => {
+const SlowFade = ({ children, delay = 0, className }: SlowFadeProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -24,6 +25,7 @@ const SlowFade = ({ children, delay = 0 }: SlowFadeProps) => {
         staggerChildren: 0.3,
       }}
       viewport={{ once: true }}
+      className={className}
     >
       {children}
     </motion.div>
