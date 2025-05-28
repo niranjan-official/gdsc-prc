@@ -13,11 +13,11 @@ const FadeUp = ({ children }: { children: ReactNode }) => {
       }}
       transition={{
         type: 'spring',
-        stiffness: 300,
-        damping: 25,
-        duration: 1.2,
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
+        stiffness: 200,
+        damping: 30,
+        duration: 3,
+        delayChildren: 0.5,
+        staggerChildren: 0.3,
       }}
       viewport={{ once: true }}
     >

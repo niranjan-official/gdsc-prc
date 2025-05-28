@@ -1,6 +1,6 @@
 "use client"
 import { GridBackground } from "../ui/GridBackground"
-import SlowFade from "@/Animations/SlowFade"
+import FadeUp from "@/Animations/FadeUp"
 import { Smartphone, Globe, Brain, Palette } from "lucide-react"
 import { DotBackground } from "../ui/DotBackground"
 
@@ -45,12 +45,12 @@ const About = () => {
       <DotBackground shadow>
         <div className="max-w-6xl mx-auto px-4">
           <div className="mb-8 md:mb-20 text-center">
-            <SlowFade>
+            <FadeUp>
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold mb-8 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 relative z-10">
                 What We Do?
               </h2>
-            </SlowFade>
-            <SlowFade delay={0.3}>
+            </FadeUp>
+            <FadeUp>
               <p className="text-lg md:text-xl text-neutral-300 max-w-4xl mx-auto leading-relaxed">
                 We at{" "}
                 <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">
@@ -70,12 +70,12 @@ const About = () => {
                 </span>{" "}
                 the developer culture.
               </p>
-            </SlowFade>
+            </FadeUp>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {fields.map((field, index) => (
-              <SlowFade key={index} delay={0.6 + index * 0.2}>
+              <FadeUp key={index}>
                 <div
                   className={`group relative p-6 md:p-8 rounded-2xl border bg-gradient-to-br ${field.bgGradient} border-neutral-800 backdrop-blur-sm transition-all duration-500 hover:scale-[1.02] hover:border-neutral-700 cursor-pointer`}
                 >
@@ -100,7 +100,7 @@ const About = () => {
                     className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${field.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`}
                   />
                 </div>
-              </SlowFade>
+              </FadeUp>
             ))}
           </div>
         </div>

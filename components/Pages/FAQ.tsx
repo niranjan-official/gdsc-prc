@@ -4,7 +4,7 @@ import type React from "react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { GridBackground } from "../ui/GridBackground"
-import SlowFade from "@/Animations/SlowFade"
+import FadeUp from "@/Animations/FadeUp"
 import GDSC from "../GDSC"
 import { ChevronDown } from "lucide-react"
 
@@ -93,21 +93,21 @@ const FAQ = () => {
       {/* <GridBackground shadow> */}
         <div className="max-w-5xl mx-auto px-4">
           <div className="mb-8 md:mb-16 text-center">
-            <SlowFade>
+            <FadeUp>
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold mb-3 md:mb-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 relative z-10">
                 FAQ
               </h2>
-            </SlowFade>
-            <SlowFade delay={0.3}>
+            </FadeUp>
+            <FadeUp>
               <p className="text-base md:text-lg lg:text-xl bg-clip-text text-transparent bg-gradient-to-r from-neutral-400 via-neutral-100 to-neutral-400">
                 Find answers to common questions about our community
               </p>
-            </SlowFade>
+            </FadeUp>
           </div>
 
           <div className="space-y-6">
             {faqs.map((faq, index) => (
-              <SlowFade key={index} delay={0.6 + index * 0.1}>
+              <FadeUp key={index}>
                 <div className="group relative border border-neutral-800 rounded-2xl overflow-hidden backdrop-blur-sm bg-neutral-900/20 hover:border-neutral-700 transition-all duration-300">
                   <button
                     onClick={() => toggleFaq(index)}
@@ -148,7 +148,7 @@ const FAQ = () => {
                   {/* Subtle glow effect */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-neutral-600/5 via-neutral-400/5 to-neutral-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 </div>
-              </SlowFade>
+              </FadeUp>
             ))}
           </div>
         </div>

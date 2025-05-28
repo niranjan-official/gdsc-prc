@@ -34,16 +34,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <FloatingNav/>
-            {children}
-            <Footer/>
-          </ThemeProvider></body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <FloatingNav/>
+          {children}
+          <Footer/>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
