@@ -4,7 +4,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import Footer from "@/components/Footer";
 import localFont from "next/font/local";
-import Head from "next/head";
 
 const inter = localFont({
     src: [
@@ -25,6 +24,16 @@ export const metadata: Metadata = {
     title: "GDGC PRC - Google Developer Groups on Campus",
     description:
         "Official website of Google Developer Groups on Campus PRC. Join our community of developers, learn new technologies, and build amazing projects together.",
+    icons: {
+        icon: '/icon.png',
+    },
+    viewport: {
+        width: 'device-width',
+        initialScale: 1,
+        maximumScale: 1,
+        userScalable: false,
+        viewportFit: 'cover',
+    },
     keywords: [
         "GDSC",
         "GDGC",
@@ -94,14 +103,6 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <Head>
-                <link
-                    rel="icon"
-                    href="/icon.png"
-                    type="image/png"
-                    sizes="32x32"
-                />
-            </Head>
             <body className={inter.className}>
                 <ThemeProvider
                     attribute="class"

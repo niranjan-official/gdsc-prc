@@ -50,7 +50,7 @@ export const Team_2024: TeamMember[] = [
     id: 6,
     name: "Sanjeev Santhosh",
     designation: "Design Facilitator",
-    image: "",
+    image: "/images/team/2024/sanjeev.jpg",
   },
   {
     id: 7,
@@ -68,7 +68,7 @@ export const Team_2024: TeamMember[] = [
     id: 9,
     name: "Abhijith U",
     designation: "Media Facilitator",
-    image: "",
+    image: "/images/team/2024/abhijith.jpg",
   },
   {
     id: 10,
