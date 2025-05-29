@@ -38,21 +38,21 @@ const Footer = () => {
               <h3 className="text-lg font-semibold text-neutral-300">Connect With Us</h3>
               <div className="flex gap-6">
                 <a
-                  href="https://www.instagram.com/dsc_providence?igsh=MXFhMm0ybGRqYTQ2MA=="
+                  href="https://www.instagram.com/gdgc_providence/"
                   className="p-3 rounded-full bg-neutral-800/50 border border-neutral-700 hover:border-neutral-600 hover:bg-neutral-700/50 transition-all duration-300 hover:scale-110"
                   aria-label="Instagram"
                 >
                   <FaInstagram size={20} className="text-neutral-300 hover:text-white transition-colors" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/gdg-providence/"
                   className="p-3 rounded-full bg-neutral-800/50 border border-neutral-700 hover:border-neutral-600 hover:bg-neutral-700/50 transition-all duration-300 hover:scale-110"
                   aria-label="LinkedIn"
                 >
                   <FaLinkedin size={20} className="text-neutral-300 hover:text-white transition-colors" />
                 </a>
                 <a
-                  href="#"
+                  href="mailto:gdscprovidence@gmail.com"
                   className="p-3 rounded-full bg-neutral-800/50 border border-neutral-700 hover:border-neutral-600 hover:bg-neutral-700/50 transition-all duration-300 hover:scale-110"
                   aria-label="Email"
                 >
