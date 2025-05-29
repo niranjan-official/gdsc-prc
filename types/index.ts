@@ -6,6 +6,7 @@ export interface TeamMember {
 }
 
 export interface Timeline {
+  id: number;
   tenure: string;
   year: number;
   members: TeamMember[];

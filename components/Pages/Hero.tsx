@@ -6,6 +6,7 @@ import { FaPaperPlane } from "react-icons/fa6";
 import SlowFade from "@/Animations/SlowFade";
 import { useState } from "react";
 import LoadingScreen from "../ui/LoadingScreen";
+import { Spotlight } from "../ui/spotlight-new";
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,6 +19,7 @@ export default function Hero() {
       <LoadingScreen onLoadingComplete={() => setIsLoaded(true)} />
       {isLoaded && (
         <GridBackground shadow>
+          <Spotlight />
           <div className="flex flex-col items-center">
             <SlowFade delay={1}>
               <h1 className="text-6xl sm:text-8xl lg:text-9xl font-extrabold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">

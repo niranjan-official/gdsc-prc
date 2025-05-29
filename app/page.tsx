@@ -7,7 +7,7 @@ import Team from "@/components/Pages/Team";
 
 export default function Home() {
   return (
-    <div className="w-full flex flex-col relative dark:bg-black mx-auto">
+    <div className="w-full flex flex-col relative dark:bg-black mx-auto overflow-x-hidden">
       <Hero/>
       <About/>
       <Events/>

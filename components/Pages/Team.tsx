@@ -1,8 +1,9 @@
 "use client"
 import { GridBackground } from "../ui/GridBackground"
 import FadeUp from "@/Animations/FadeUp"
-import TimeLine from "../TimeLine"
+import TeamTimeline from "../TimeLine"
 import { DotBackground } from "../ui/DotBackground"
+import { TimelineData } from "@/constants"
 
 const Team = () => {
   return (
@@ -27,7 +28,9 @@ const Team = () => {
           </div>
 
           <FadeUp>
-            <TimeLine />
+            <div className="w-full flex justify-center">
+            <TeamTimeline timelineData={TimelineData} />
+            </div>
           </FadeUp>
         </div>
       </DotBackground>
