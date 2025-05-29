@@ -31,20 +31,20 @@ export const Team_2024: TeamMember[] = [
   {
     id: 3,
     name: "Anand Sudeep",
-    designation: "Community mentor",
+    designation: "Community Mentor",
     image: "/images/team/2023/anand.jpg",
   },
   {
     id: 4,
     name: "Niranjan Sabarinath",
-    designation: "Co-organizer",
+    designation: "Co-Organizer",
     image: "/images/team/2024/niranjan.jpg",
   },
   {
     id: 5,
     name: "Abna Praveen P",
     designation: "Design Facilitator",
-    image: "",
+    image: "/images/team/2024/abna.jpg",
   },
   {
     id: 6,

@@ -64,11 +64,11 @@ const SkeletonFour = () => (
 const SkeletonFive = () => (
   <div className="flex flex-1 w-full h-auto min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800 overflow-hidden border border-neutral-700">
     <Image
-      src={"/images/posters/webDev.jpg"}
+      src={"/images/posters/buildai.jpg"}
       width={500}
       height={400}
       style={{ width: "100%", height: "auto" }}
-      alt="Web Development Workshop"
+      alt="Build With AI"
       className="object-cover"
     />
   </div>
@@ -89,10 +89,10 @@ const Events = () => {
       icon: <MdQuestionAnswer className="h-4 w-4 text-yellow-400" />,
     },
     {
-      title: "Liquid Layout",
-      description: "Discover the beauty of responsiveness in web design.",
-      header: <SkeletonThree />,
-      icon: <FaCss3 className="h-4 w-4 text-red-400" />,
+      title: "Build With AI",
+      description: "A session on introduction to Gen-AI Study Jam.",
+      header: <SkeletonFive />,
+      icon: <FaHtml5 className="h-4 w-4 text-orange-400" />,
     },
     {
       title: "Arbitrum - Web3 Workshop",
@@ -101,10 +101,10 @@ const Events = () => {
       icon: <SiWeb3Dotjs className="h-4 w-4 text-green-400" />,
     },
     {
-      title: "Web Development Workshop",
-      description: "3-Day online workshop on basic Web development.",
-      header: <SkeletonFive />,
-      icon: <FaHtml5 className="h-4 w-4 text-orange-400" />,
+      title: "Liquid Layout",
+      description: "Discover the beauty of responsiveness in web design.",
+      header: <SkeletonThree />,
+      icon: <FaCss3 className="h-4 w-4 text-red-400" />,
     },
   ]
 
