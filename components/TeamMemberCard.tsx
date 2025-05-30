@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import { useState, useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { Meteors, Icon } from "./ui/meteors";
 import { FaInstagram, FaLinkedin } from "react-icons/fa6";
 import { IoMdMailOpen } from "react-icons/io";
@@ -16,35 +16,8 @@ interface TeamMemberCard {
 
 const TeamMemberCard = ({ name, designation, image, year }: TeamMemberCard) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const controls = useAnimation();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          controls.start("animate");
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const element = document.getElementById(`card-${name}`);
-    if (element) {
-      observer.observe(element);
-    }
-
-    return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
-    };
-  }, [name, controls]);
-
   return (
     <motion.div
-      id={`card-${name}`}
       initial={{ y: 20, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1, scale: [1, 1.05, 1] }}
       transition={{ ease: "easeInOut", duration: 0.75 }}
@@ -94,7 +67,7 @@ const TeamMemberCard = ({ name, designation, image, year }: TeamMemberCard) => {
           <span>&lt;/&gt;</span>
           <span className="text-neutral-300">{year}</span>
         </div>
-        {isVisible && <Meteors number={20} />}
+        <Meteors number={20} />
       </div>
       <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
       <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
