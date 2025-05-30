@@ -109,7 +109,7 @@ const Events = () => {
   ]
 
   return (
-    <section id="events" className="min-h-screen flex flex-col items-center justify-center py-24 select-none">
+    <section id="events" className="min-h-screen flex flex-col items-center bg-zinc-950 justify-center py-16 md:py-24 select-none">
         <div className="w-full max-w-7xl mx-auto px-4">
           <div className="text-center mb-8 md:mb-20">
             <FadeUp>

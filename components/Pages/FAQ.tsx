@@ -89,7 +89,7 @@ const FAQ = () => {
   }
 
   return (
-    <section id="faq" className="min-h-screen flex flex-col items-center justify-center py-10 md:py-24 select-none">
+    <section id="faq" className="min-h-screen flex flex-col items-center bg-zinc-950 justify-center py-10 md:py-24 select-none">
       {/* <GridBackground shadow> */}
         <div className="max-w-5xl mx-auto px-4">
           <div className="mb-8 md:mb-16 text-center">

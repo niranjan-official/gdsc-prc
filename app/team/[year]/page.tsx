@@ -12,7 +12,7 @@ const page = async ({ params }: { params: { year: string } }) => {
     return notFound();
   }
   return (
-    <div className="w-full min-h-screen flex flex-col items-center bg-black px-10 md:px-16 lg:px-24 pt-32 pb-10">
+    <div className="w-full min-h-screen flex flex-col items-center bg-zinc-950 px-10 md:px-16 lg:px-24 pt-32 pb-10">
       <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 relative z-10">
                 Team Members
               </h2>
