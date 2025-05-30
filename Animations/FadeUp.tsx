@@ -19,7 +19,6 @@ const FadeUp = ({ children }: { children: ReactNode }) => {
         delayChildren: 0.5,
         staggerChildren: 0.3,
       }}
-      viewport={{ once: true }}
     >
       {children}
     </motion.div>
