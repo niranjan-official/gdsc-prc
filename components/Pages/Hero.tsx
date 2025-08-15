@@ -40,7 +40,8 @@ export default function Hero() {
               <Button
                 containerClassName="rounded-xl"
                 as="button"
-                className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 "
+                className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+                href="https://gdg.community.dev/gdg-on-campus-providence-college-of-engineering-school-of-business-chengannur-india/"
               >
                 <span>Join Us</span>
                 <FaPaperPlane size={15} className="text-neutral-300" />

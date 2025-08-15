@@ -6,6 +6,18 @@ import { cn } from "@/utils/cn";
 
 type Direction = "TOP" | "LEFT" | "BOTTOM" | "RIGHT";
 
+interface ButtonProps {
+  children: React.ReactNode;
+  containerClassName?: string;
+  className?: string;
+  as?: React.ElementType;
+  duration?: number;
+  clockwise?: boolean;
+  href?: string;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+}
+
 export function Button({
   children,
   containerClassName,
@@ -13,16 +25,11 @@ export function Button({
   as: Tag = "button",
   duration = 1,
   clockwise = true,
+  href,
+  onClick,
+  type = "button",
   ...props
-}: React.PropsWithChildren<
-  {
-    as?: React.ElementType;
-    containerClassName?: string;
-    className?: string;
-    duration?: number;
-    clockwise?: boolean;
-  } & React.HTMLAttributes<HTMLElement>
->) {
+}: ButtonProps) {
   const [hovered, setHovered] = useState<boolean>(false);
   const [direction, setDirection] = useState<Direction>("TOP");
 
@@ -54,7 +61,37 @@ export function Button({
       }, duration * 1000);
       return () => clearInterval(interval);
     }
-  }, [hovered]);
+  }, [hovered, duration]);
+
+  const renderButtonContent = () => {
+    if (href) {
+      return (
+        <a
+          href={href}
+          className={cn(
+            "w-auto text-white z-10 bg-black px-4 py-2 rounded-[inherit]",
+            className
+          )}
+        >
+          {children}
+        </a>
+      );
+    }
+
+    return (
+      <button
+        type={type}
+        onClick={onClick}
+        className={cn(
+          "w-auto text-white z-10 bg-black px-4 py-2 rounded-[inherit]",
+          className
+        )}
+      >
+        {children}
+      </button>
+    );
+  };
+
   return (
     <Tag
       onMouseEnter={(event: React.MouseEvent<HTMLDivElement>) => {
@@ -62,20 +99,12 @@ export function Button({
       }}
       onMouseLeave={() => setHovered(false)}
       className={cn(
-        "relative flex rounded-full my-4  content-center bg-black/20 hover:bg-black/10 transition duration-500 dark:bg-white/20 items-center flex-col flex-nowrap gap-10 h-min justify-center overflow-visible p-px decoration-clone w-fit",
+        "relative flex rounded-full my-4 content-center bg-black/20 hover:bg-black/10 transition duration-500 dark:bg-white/20 items-center flex-col flex-nowrap gap-10 h-min justify-center overflow-visible p-px decoration-clone",
         containerClassName
       )}
       {...props}
     >
-      <a
-        href="https://gdg.community.dev/gdg-on-campus-providence-college-of-engineering-school-of-business-chengannur-india/"
-        className={cn(
-          "w-auto text-white z-10 bg-black px-4 py-2 rounded-[inherit]",
-          className
-        )}
-      >
-        {children}
-      </a>
+      {renderButtonContent()}
       <motion.div
         className={cn(
           "flex-none inset-0 overflow-hidden absolute z-0 rounded-[inherit]"
