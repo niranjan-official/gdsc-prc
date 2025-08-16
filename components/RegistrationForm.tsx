@@ -494,7 +494,6 @@ const RegistrationForm = () => {
           >
             Back
           </Button>
-          
                      {currentStep < 4 ? (
              <Button
                containerClassName="rounded-xl"
