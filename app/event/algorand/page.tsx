@@ -31,7 +31,7 @@ const AlgorandEventPage = () => {
             >
               ← Back to Event Details
             </motion.button>
-            <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent pb-1 md:pb-3 bg-gradient-to-b from-neutral-200 to-neutral-500 mb-4">
               Event Registration
             </h1>
             <p className="text-lg text-neutral-300">

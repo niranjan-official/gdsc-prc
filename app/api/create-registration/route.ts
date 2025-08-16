@@ -1,19 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { db } from '@/firebase/config'
+import { collection, addDoc } from 'firebase/firestore'
 
-// Mock Firebase storage - replace with actual Firebase implementation
-const mockCreateRegistration = async (registrationData: any) => {
-  // Simulate database storage
-  // In real implementation, add document to Firebase collection "algorand-students"
-  
-  const registration = {
-    ...registrationData,
-    payment_status: 'pending',
-    createdAt: new Date().toISOString(),
-    id: Math.random().toString(36).substr(2, 9) // Mock ID
+const createRegistration = async (registrationData: any) => {
+  try {
+    const registrationsRef = collection(db, 'algorand-students')
+    
+    const registration = {
+      ...registrationData,
+      payment_status: 'pending',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    }
+    
+    const docRef = await addDoc(registrationsRef, registration)
+    
+    return { success: true, id: docRef.id }
+  } catch (error) {
+    console.error('Firebase write error:', error)
+    throw error
   }
-  
-  // Simulate success
-  return { success: true, id: registration.id }
 }
 
 export async function POST(request: NextRequest) {
@@ -29,6 +35,21 @@ export async function POST(request: NextRequest) {
           { status: 400 }
         )
       }
+    }
+
+    // Check if user already exists
+    const { db } = await import('@/firebase/config')
+    const { collection, query, where, getDocs } = await import('firebase/firestore')
+    
+    const registrationsRef = collection(db, 'algorand-students')
+    const q = query(registrationsRef, where('email', '==', registrationData.email))
+    const querySnapshot = await getDocs(q)
+    
+    if (!querySnapshot.empty) {
+      return NextResponse.json(
+        { error: 'User already registered with this email' },
+        { status: 409 }
+      )
     }
     
     // Validate email format
@@ -100,7 +121,7 @@ export async function POST(request: NextRequest) {
     }
     
     // Create registration in Firebase
-    const result = await mockCreateRegistration(registrationData)
+    const result = await createRegistration(registrationData)
     
     if (result.success) {
       return NextResponse.json({

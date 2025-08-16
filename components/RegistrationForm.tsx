@@ -20,6 +20,7 @@ interface RegistrationData {
 
 interface RegistrationResponse {
   exists: boolean
+  payment_status?: 'pending' | 'success' | 'failed'
 }
 
 const RegistrationForm = () => {
@@ -69,35 +70,6 @@ const RegistrationForm = () => {
   ]
 
   const foodOptions = ['Veg', 'Non-Veg']
-
-  useEffect(() => {
-    // Check if user already has a registration
-    if (data.email && currentStep === 2) {
-      checkExistingRegistration()
-    }
-  }, [data.email, currentStep])
-
-  const checkExistingRegistration = async () => {
-    try {
-      setLoading(true)
-      const response = await fetch('/api/check-registration', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: data.email })
-      })
-      
-      const result: RegistrationResponse = await response.json()
-      setExistingRegistration(result)
-      
-      if (result.exists) {
-        setRegistrationComplete(true)
-      }
-    } catch (error) {
-      console.error('Error checking registration:', error)
-    } finally {
-      setLoading(false)
-    }
-  }
 
   const validateRegNo = (regNo: string): { isValid: boolean; year?: number; batch?: string; error?: string } => {
     const regex = /^prc(\d{2})(cs|ca|csot)(\d{3})$/i
@@ -164,13 +136,49 @@ const RegistrationForm = () => {
     }
   }
 
-  const handleNext = () => {
+  const handleNext = async () => {
     // Scroll to top when next button is clicked
     window.scrollTo({ top: 0, behavior: 'smooth' })
     
-    // Step 0 -> 1, Step 1 -> 2
-    if (currentStep === 0 || currentStep === 1) {
+    // Step 0 -> 1
+    if (currentStep === 0) {
       setCurrentStep(prev => prev + 1)
+      return
+    }
+    
+    // Step 1 -> 2: Check for existing registration first
+    if (currentStep === 1) {
+      try {
+        setLoading(true)
+        const response = await fetch('/api/check-registration', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: data.email })
+        })
+        
+        const result: RegistrationResponse = await response.json()
+        setExistingRegistration(result)
+        
+        if (result.exists) {
+          if (result.payment_status === 'success') {
+            setRegistrationComplete(true)
+            return
+          } else if (result.payment_status === 'pending') {
+            // User has completed registration but payment is pending
+            setExistingRegistration(result)
+            return
+          }
+        }
+        
+        // No existing registration or payment not completed, proceed to next step
+        setCurrentStep(prev => prev + 1)
+      } catch (error) {
+        console.error('Error checking registration:', error)
+        // On error, still allow proceeding
+        setCurrentStep(prev => prev + 1)
+      } finally {
+        setLoading(false)
+      }
       return
     }
 
@@ -213,11 +221,11 @@ const RegistrationForm = () => {
         body: JSON.stringify(data)
       })
       
-      if (response.ok) {
-        // Registration successful - redirect to external payment website
-        // You can replace this URL with your actual external payment gateway
-        window.location.href = 'https://your-payment-gateway.com'
-      } else {
+             if (response.ok) {
+         // Registration successful - redirect to external payment website
+         const paymentUrl = `https://snacker.in.net/event/algorandd?email=${encodeURIComponent(data.email)}`
+         window.location.href = paymentUrl
+       } else {
         const errorData = await response.json()
         setError(errorData.error || 'Registration failed. Please try again.')
       }
@@ -390,7 +398,30 @@ const RegistrationForm = () => {
         <div className="text-center space-y-6">
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
           <h2 className="text-2xl font-bold text-white">Registration Complete!</h2>
-          <p className="text-neutral-300">You have already registered for this event.</p>
+          <p className="text-neutral-300">Email {data.email} has already completed registration for this event.</p>
+        </div>
+      </DotBackground>
+    )
+  }
+
+  if (existingRegistration?.exists && existingRegistration.payment_status === 'pending') {
+    return (
+      <DotBackground shadow>
+        <div className="text-center space-y-6">
+          <AlertCircle className="w-16 h-16 text-yellow-500 mx-auto" />
+          <h2 className="text-2xl font-bold text-white">Registration Pending Payment</h2>
+          <p className="text-neutral-300">Your registration is complete. Please proceed to payment to confirm your spot.</p>
+          <Button
+            containerClassName="rounded-xl"
+            as="button"
+            className="dark:bg-black bg-white text-black dark:text-white"
+                         onClick={() => {
+               const paymentUrl = `https://snacker.in.net/event/algorandd?email=${encodeURIComponent(data.email)}`
+               window.location.href = paymentUrl
+             }}
+          >
+            Go to Payment
+          </Button>
         </div>
       </DotBackground>
     )
@@ -464,16 +495,23 @@ const RegistrationForm = () => {
             Back
           </Button>
           
-          {currentStep < 4 ? (
-            <Button
-              containerClassName="rounded-xl"
-              as="button"
-              className={`dark:bg-black bg-white text-black dark:text-white ${!canProceed() ? 'opacity-50 cursor-not-allowed' : ''}`}
-              onClick={canProceed() ? handleNext : undefined}
-            >
-              Next
-            </Button>
-          ) : (
+                     {currentStep < 4 ? (
+             <Button
+               containerClassName="rounded-xl"
+               as="button"
+               className={`dark:bg-black bg-white text-black dark:text-white ${!canProceed() || loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+               onClick={!canProceed() || loading ? undefined : handleNext}
+             >
+               {loading && currentStep === 1 ? (
+                 <div className="flex items-center">
+                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                   Checking...
+                 </div>
+               ) : (
+                 'Next'
+               )}
+             </Button>
+           ) : (
             <Button
               containerClassName="rounded-xl"
               as="button"
@@ -485,9 +523,9 @@ const RegistrationForm = () => {
                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                   Processing...
                 </div>
-              ) : (
-                'Go to Payment'
-              )}
+                             ) : (
+                 'Complete Registration'
+               )}
             </Button>
           )}
         </div>
