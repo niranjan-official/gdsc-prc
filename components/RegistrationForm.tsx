@@ -223,7 +223,7 @@ const RegistrationForm = () => {
       
              if (response.ok) {
          // Registration successful - redirect to external payment website
-         const paymentUrl = `https://snacker.in.net/event/algorandd?email=${encodeURIComponent(data.email)}`
+         const paymentUrl = `https://snacker.in.net/event/algorand?email=${encodeURIComponent(data.email)}`
          window.location.href = paymentUrl
        } else {
         const errorData = await response.json()
@@ -416,7 +416,7 @@ const RegistrationForm = () => {
             as="button"
             className="dark:bg-black bg-white text-black dark:text-white"
                          onClick={() => {
-               const paymentUrl = `https://snacker.in.net/event/algorandd?email=${encodeURIComponent(data.email)}`
+               const paymentUrl = `https://snacker.in.net/event/algorand?email=${encodeURIComponent(data.email)}`
                window.location.href = paymentUrl
              }}
           >
