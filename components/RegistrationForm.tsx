@@ -280,7 +280,7 @@ const RegistrationForm = () => {
                 type="text"
                 placeholder="e.g., prc22cs037"
                 value={data.regNo || ''}
-                onChange={(e) => handleRegNoInput(e.target.value)}
+                onChange={(e) => handleRegNoInput(e.target.value.toUpperCase())}
                 className="w-full px-4 py-3 bg-neutral-800/50 border border-neutral-700 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:border-neutral-500 focus:ring-2 focus:ring-neutral-500/20 transition-all"
               />
               <p className="text-xs text-neutral-400 mt-1">Format: prc&lt;year&gt;&lt;batch&gt;&lt;id&gt; (e.g., prc22cs037)</p>
