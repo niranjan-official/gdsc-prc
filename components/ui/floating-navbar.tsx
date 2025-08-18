@@ -96,7 +96,7 @@ export const FloatingNav = ({ className }: { className?: string }) => {
       >
         {navItems.map((navItem: any, idx: number) => {
           let navLink = navItem.link;
-          if (pathname.includes("team")) {
+          if (pathname.includes("team") || pathname.includes("event/algorand")) {
             navLink = `/${navItem.link}`;
           }
           return (
