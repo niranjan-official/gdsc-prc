@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/firebase/config'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, getCountFromServer, query, where, getDocs } from 'firebase/firestore'
 
 const createRegistration = async (registrationData: any) => {
   try {
@@ -26,6 +26,17 @@ export async function POST(request: NextRequest) {
   try {
     const registrationData = await request.json()
     
+    // Enforce registration cap before any heavy work
+    const registrationsRefForCount = collection(db, 'algorand-students')
+    const countSnapshot = await getCountFromServer(registrationsRefForCount)
+    const currentCount = countSnapshot.data().count
+    if (currentCount >= 100) {
+      return NextResponse.json(
+        { error: 'Registration closed' },
+        { status: 403 }
+      )
+    }
+    
     // Validate required fields
     const requiredFields = ['name', 'email', 'mobile', 'year', 'batch', 'foodPreference', 'linkedinProfile', 'githubProfile', 'pythonTypescriptKnowledge', 'web3Knowledge']
     for (const field of requiredFields) {
@@ -38,9 +49,6 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if user already exists
-    const { db } = await import('@/firebase/config')
-    const { collection, query, where, getDocs } = await import('firebase/firestore')
-    
     const registrationsRef = collection(db, 'algorand-students')
     const q = query(registrationsRef, where('email', '==', registrationData.email))
     const querySnapshot = await getDocs(q)
