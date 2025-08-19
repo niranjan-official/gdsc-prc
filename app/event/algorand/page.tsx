@@ -1,16 +1,30 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RegistrationForm from '@/components/RegistrationForm'
 import Image from 'next/image'
 import { Button } from '@/components/ui/Button'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { DotBackground } from '@/components/ui/DotBackground'
 import { Spotlight } from '@/components/ui/spotlight-new'
 import { Calendar, Clock, MapPin } from 'lucide-react'
 
 const AlgorandEventPage = () => {
   const [showRegistration, setShowRegistration] = useState(false)
+  const [registrationClosed, setRegistrationClosed] = useState(false)
+
+  useEffect(() => {
+    const fetchStatus = async () => {
+      try {
+        const res = await fetch('/api/registration-status', { cache: 'no-store' })
+        const data = await res.json()
+        setRegistrationClosed(!!data.closed)
+      } catch (e) {
+        // fail open in UI; server still enforces cap
+      }
+    }
+    fetchStatus()
+  }, [])
 
   const eventDetails = [
     "Learn about Algorand's innovative blockchain technology",
@@ -19,6 +33,30 @@ const AlgorandEventPage = () => {
   ]
 
   if (showRegistration) {
+    if (registrationClosed) {
+      return (
+        <div className="min-h-screen bg-black text-white flex items-center justify-center p-5 overflow-hidden">
+          <div className="w-full max-w-4xl">
+            <div className="text-center mb-8">
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                onClick={() => setShowRegistration(false)}
+                className="text-neutral-400 hover:text-white transition-colors mb-4 flex items-center gap-2 mx-auto"
+              >
+                ← Back to Event Details
+              </motion.button>
+              <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent pb-1 md:pb-3 bg-gradient-to-b from-neutral-200 to-neutral-500 mb-4">
+                Registration Closed
+              </h1>
+              <p className="text-lg text-neutral-300">
+                We have reached the maximum of 100 registrations.
+              </p>
+            </div>
+          </div>
+        </div>
+      )
+    }
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center p-5 overflow-hidden">
         <div className="w-full max-w-4xl">
@@ -139,14 +177,20 @@ const AlgorandEventPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 }}
                 >
-                  <Button
-                    containerClassName="rounded-xl"
-                    as="button"
-                    className="dark:bg-black bg-white w-full text-black dark:text-white text-lg px-8 py-4"
-                    onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setShowRegistration(true); }}
-                  >
-                    Register Now
-                  </Button>
+                  {registrationClosed ? (
+                    <div className="px-8 py-4 rounded-xl border border-neutral-700 text-neutral-400">
+                      Registration Closed
+                    </div>
+                  ) : (
+                    <Button
+                      containerClassName="rounded-xl"
+                      as="button"
+                      className="dark:bg-black bg-white w-full text-black dark:text-white text-lg px-8 py-4"
+                      onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setShowRegistration(true); }}
+                    >
+                      Register Now
+                    </Button>
+                  )}
                 </motion.div>
               </div>
             </div>
@@ -245,14 +289,20 @@ const AlgorandEventPage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 }}
                   >
-                    <Button
-                      containerClassName="rounded-xl"
-                      as="button"
-                      className="dark:bg-black bg-white text-black dark:text-white text-lg px-8 py-4"
-                      onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setShowRegistration(true); }}
-                    >
-                      Register Now
-                    </Button>
+                    {registrationClosed ? (
+                      <div className="px-8 py-4 rounded-xl border border-neutral-700 text-neutral-400 inline-block">
+                        Registration Closed
+                      </div>
+                    ) : (
+                      <Button
+                        containerClassName="rounded-xl"
+                        as="button"
+                        className="dark:bg-black bg-white text-black dark:text-white text-lg px-8 py-4"
+                        onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setShowRegistration(true); }}
+                      >
+                        Register Now
+                      </Button>
+                    )}
                   </motion.div>
                 </motion.div>
               </div>
