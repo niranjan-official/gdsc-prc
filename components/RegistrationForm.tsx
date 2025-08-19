@@ -11,11 +11,16 @@ import { CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 interface RegistrationData {
   name: string
   email: string
+  mobile: string
   hasRegNo: string | undefined
   regNo: string | null
   year: string
   batch: string
   foodPreference: string
+  linkedinProfile: string
+  githubProfile: string
+  pythonTypescriptKnowledge: string
+  web3Knowledge: string
 }
 
 interface RegistrationResponse {
@@ -28,11 +33,16 @@ const RegistrationForm = () => {
   const [data, setData] = useState<RegistrationData>({
     name: '',
     email: '',
+    mobile: '',
     hasRegNo: undefined,
     regNo: null,
     year: '',
     batch: '',
-    foodPreference: ''
+    foodPreference: '',
+    linkedinProfile: '',
+    githubProfile: '',
+    pythonTypescriptKnowledge: '',
+    web3Knowledge: ''
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -55,6 +65,12 @@ const RegistrationForm = () => {
       placeholder: 'Enter your email address'
     },
     {
+      id: 'mobile',
+      question: "What's your mobile number?",
+      type: 'tel',
+      placeholder: 'Enter your mobile number'
+    },
+    {
       id: 'hasRegNo',
       question: "Do you have a college registration number?",
       type: 'choice',
@@ -70,6 +86,8 @@ const RegistrationForm = () => {
   ]
 
   const foodOptions = ['Veg', 'Non-Veg']
+
+  const web3KnowledgeOptions = ['Zero', 'Basic', 'Intermediate', 'Advanced']
 
   const validateRegNo = (regNo: string): { isValid: boolean; year?: number; batch?: string; error?: string } => {
     const regex = /^prc(\d{2})(cs|ca|csot)(\d{3})$/i
@@ -146,8 +164,14 @@ const RegistrationForm = () => {
       return
     }
     
-    // Step 1 -> 2: Check for existing registration first
+    // Step 1 -> 2
     if (currentStep === 1) {
+      setCurrentStep(prev => prev + 1)
+      return
+    }
+    
+    // Step 2 -> 3: Check for existing registration first
+    if (currentStep === 2) {
       try {
         setLoading(true)
         const response = await fetch('/api/check-registration', {
@@ -182,29 +206,40 @@ const RegistrationForm = () => {
       return
     }
 
-    // Step 2: Branch based on hasRegNo selection
-    if (currentStep === 2) {
+    // Step 3: Branch based on hasRegNo selection
+    if (currentStep === 3) {
       if (data.hasRegNo === 'Yes') {
         // With reg no, skip manual year/batch and go to food preference
-        setCurrentStep(4)
+        setCurrentStep(5)
       } else {
         // Without reg no, go to manual year/batch
-        setCurrentStep(3)
+        setCurrentStep(4)
       }
       return
     }
 
-    // Step 3 (manual year/batch) -> Step 4 (food)
-    if (currentStep === 3) {
-      setCurrentStep(4)
+    // Step 4 (manual year/batch) -> Step 5 (food)
+    if (currentStep === 4) {
+      setCurrentStep(5)
+      return
+    }
+
+    // Step 5 (food) -> Step 6 (additional fields)
+    if (currentStep === 5) {
+      setCurrentStep(6)
       return
     }
   }
 
   const handleBack = () => {
     // If on food step and the user has a reg no, skip the manual year/batch step
-    if (currentStep === 4 && data.hasRegNo === 'Yes') {
-      setCurrentStep(2)
+    if (currentStep === 5 && data.hasRegNo === 'Yes') {
+      setCurrentStep(3)
+      return
+    }
+    // If on additional fields step, go back to food preference
+    if (currentStep === 6) {
+      setCurrentStep(5)
       return
     }
     setCurrentStep(prev => Math.max(0, prev - 1))
@@ -239,7 +274,7 @@ const RegistrationForm = () => {
   const renderQuestion = () => {
     const question = questions[currentStep]
     
-    if (currentStep === 0 || currentStep === 1) {
+    if (currentStep === 0 || currentStep === 1 || currentStep === 2) {
       return (
         <div className="space-y-4">
           <input
@@ -253,7 +288,7 @@ const RegistrationForm = () => {
       )
     }
     
-    if (currentStep === 2) {
+    if (currentStep === 3) {
       return (
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
@@ -290,7 +325,7 @@ const RegistrationForm = () => {
       )
     }
     
-    if (currentStep === 3) {
+    if (currentStep === 4) {
       return (
         <div className="space-y-4">
           <div>
@@ -324,7 +359,7 @@ const RegistrationForm = () => {
       )
     }
     
-    if (currentStep === 4) {
+    if (currentStep === 5) {
       return (
         <div className="space-y-4">
           <div>
@@ -348,6 +383,59 @@ const RegistrationForm = () => {
         </div>
       )
     }
+
+    if (currentStep === 6) {
+      return (
+        <div className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-neutral-300 mb-2">LinkedIn Profile URL</label>
+            <input
+              type="url"
+              placeholder="https://linkedin.com/in/yourprofile"
+              value={data.linkedinProfile}
+              onChange={(e) => setData(prev => ({ ...prev, linkedinProfile: e.target.value }))}
+              className="w-full px-4 py-3 bg-neutral-800/50 border border-neutral-700 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:border-neutral-500 focus:ring-2 focus:ring-neutral-500/20 transition-all"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-neutral-300 mb-2">GitHub Profile URL</label>
+            <input
+              type="url"
+              placeholder="https://github.com/yourusername"
+              value={data.githubProfile}
+              onChange={(e) => setData(prev => ({ ...prev, githubProfile: e.target.value }))}
+              className="w-full px-4 py-3 bg-neutral-800/50 border border-neutral-700 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:border-neutral-500 focus:ring-2 focus:ring-neutral-500/20 transition-all"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-neutral-300 mb-2">Do you have knowledge on Python or TypeScript?</label>
+            <input
+              type="text"
+              placeholder="Describe your experience with Python or TypeScript"
+              value={data.pythonTypescriptKnowledge}
+              onChange={(e) => setData(prev => ({ ...prev, pythonTypescriptKnowledge: e.target.value }))}
+              className="w-full px-4 py-3 bg-neutral-800/50 border border-neutral-700 rounded-lg text-white placeholder-neutral-400 focus:outline-none focus:border-neutral-500 focus:ring-2 focus:ring-neutral-500/20 transition-all"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-neutral-300 mb-2">Your knowledge in Web3</label>
+            <select
+              value={data.web3Knowledge}
+              onChange={(e) => setData(prev => ({ ...prev, web3Knowledge: e.target.value }))}
+              className="w-full px-4 py-3 bg-neutral-800/50 border border-neutral-700 rounded-lg text-white focus:outline-none focus:border-neutral-500 focus:ring-2 focus:ring-neutral-500/20"
+            >
+              <option value="">Select your Web3 knowledge level</option>
+              {web3KnowledgeOptions.map(level => (
+                <option key={level} value={level}>{level}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+      )
+    }
     
     return null
   }
@@ -355,7 +443,8 @@ const RegistrationForm = () => {
   const canProceed = () => {
     if (currentStep === 0) return data.name.trim().length > 0
     if (currentStep === 1) return data.email.trim().length > 0
-    if (currentStep === 2) {
+    if (currentStep === 2) return data.mobile.trim().length > 0
+    if (currentStep === 3) {
       if (data.hasRegNo === 'Yes') {
         // If user has regNo, check if it's valid and meets restrictions
         if (data.regNo) {
@@ -366,23 +455,25 @@ const RegistrationForm = () => {
       }
       return data.hasRegNo !== undefined // Can proceed if they chose "No"
     }
-    if (currentStep === 3) return data.year && data.batch
-    if (currentStep === 4) return data.foodPreference
+    if (currentStep === 4) return data.year && data.batch
+    if (currentStep === 5) return data.foodPreference
+    if (currentStep === 6) return data.linkedinProfile.trim().length > 0 && data.githubProfile.trim().length > 0 && data.pythonTypescriptKnowledge.trim().length > 0 && data.web3Knowledge
     return false
   }
 
   const getVisibleStepInfo = () => {
     // Compute a user-friendly step number and total steps based on the chosen path
     const usingRegNo = data.hasRegNo === 'Yes'
-    const total = usingRegNo ? 4 : 5
+    const total = usingRegNo ? 5 : 6
     let displayStep = 1
     if (!usingRegNo) {
-      // Path: 0->1, 1->2, 2->3, 3->4, 4->5
+      // Path: 0->1, 1->2, 2->3, 3->4, 4->5, 5->6
       displayStep = currentStep + 1
     } else {
-      // Path: 0->1, 1->2, 2->3, 4->4
-      if (currentStep <= 2) displayStep = currentStep + 1
-      else if (currentStep === 4) displayStep = 4
+      // Path: 0->1, 1->2, 2->3, 3->5, 5->6
+      if (currentStep <= 3) displayStep = currentStep + 1
+      else if (currentStep === 5) displayStep = 4
+      else if (currentStep === 6) displayStep = 5
     }
     return { displayStep, total }
   }
@@ -465,8 +556,9 @@ const RegistrationForm = () => {
           >
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
               {questions[currentStep]?.question || 
-               (currentStep === 3 ? 'Select your details' : 
-                currentStep === 4 ? 'Food preference' : '')}
+               (currentStep === 4 ? 'Select your details' : 
+                currentStep === 5 ? 'Food preference' : 
+                currentStep === 6 ? 'Additional Information' : '')}
             </h2>
             
             {renderQuestion()}
@@ -494,14 +586,14 @@ const RegistrationForm = () => {
           >
             Back
           </Button>
-                     {currentStep < 4 ? (
+                     {currentStep < 6 ? (
              <Button
                containerClassName="rounded-xl"
                as="button"
                className={`dark:bg-black bg-white text-black dark:text-white ${!canProceed() || loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                onClick={!canProceed() || loading ? undefined : handleNext}
              >
-               {loading && currentStep === 1 ? (
+               {loading && currentStep === 2 ? (
                  <div className="flex items-center">
                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                    Checking...
@@ -522,9 +614,9 @@ const RegistrationForm = () => {
                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                   Processing...
                 </div>
-                             ) : (
-                 'Complete Registration'
-               )}
+              ) : (
+                'Complete Registration'
+              )}
             </Button>
           )}
         </div>
@@ -534,3 +626,5 @@ const RegistrationForm = () => {
 }
 
 export default RegistrationForm
+
+
