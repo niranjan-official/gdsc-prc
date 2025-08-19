@@ -47,11 +47,11 @@ const SkeletonTwo = () => (
 const SkeletonThree = () => (
     <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800 overflow-hidden border border-neutral-700">
         <Image
-            src={"/images/posters/liquidLayout.jpg"}
+            src={"/images/posters/resume-revamp.jpg"}
             width={500}
             height={400}
             style={{ width: "100%", height: "auto" }}
-            alt="Liquid Layout"
+            alt="Resume Revamp"
             className="object-cover"
         />
     </div>
@@ -113,7 +113,7 @@ const Events = () => {
         {
             title: "Resume Revamp",
             description: "A workshop on how to revamp your resume.",
-            header: <SkeletonOne />,
+            header: <SkeletonThree />,
             icon: <PiReadCvLogoFill className="h-4 w-4 text-blue-400" />,
         },
     ];
