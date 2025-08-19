@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     const registrationData = await request.json()
     
     // Validate required fields
-    const requiredFields = ['name', 'email', 'year', 'batch', 'foodPreference']
+    const requiredFields = ['name', 'email', 'mobile', 'year', 'batch', 'foodPreference', 'linkedinProfile', 'githubProfile', 'pythonTypescriptKnowledge', 'web3Knowledge']
     for (const field of requiredFields) {
       if (!registrationData[field]) {
         return NextResponse.json(
@@ -57,6 +57,50 @@ export async function POST(request: NextRequest) {
     if (!emailRegex.test(registrationData.email)) {
       return NextResponse.json(
         { error: 'Invalid email format' },
+        { status: 400 }
+      )
+    }
+
+    // Validate mobile number format (basic validation for Indian numbers)
+    const mobileRegex = /^[6-9]\d{9}$/
+    if (!mobileRegex.test(registrationData.mobile)) {
+      return NextResponse.json(
+        { error: 'Invalid mobile number format. Please enter a valid 10-digit Indian mobile number' },
+        { status: 400 }
+      )
+    }
+
+    // Validate LinkedIn profile URL
+    const linkedinRegex = /^https?:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/
+    if (!linkedinRegex.test(registrationData.linkedinProfile)) {
+      return NextResponse.json(
+        { error: 'Invalid LinkedIn profile URL format' },
+        { status: 400 }
+      )
+    }
+
+    // Validate GitHub profile URL
+    const githubRegex = /^https?:\/\/(www\.)?github\.com\/[a-zA-Z0-9-]+\/?$/
+    if (!githubRegex.test(registrationData.githubProfile)) {
+      return NextResponse.json(
+        { error: 'Invalid GitHub profile URL format' },
+        { status: 400 }
+      )
+    }
+
+    // Validate Python/TypeScript knowledge (should not be empty)
+    if (!registrationData.pythonTypescriptKnowledge.trim()) {
+      return NextResponse.json(
+        { error: 'Python/TypeScript knowledge description is required' },
+        { status: 400 }
+      )
+    }
+
+    // Validate web3 knowledge level
+    const validWeb3Levels = ['Zero', 'Basic', 'Intermediate', 'Advanced']
+    if (!validWeb3Levels.includes(registrationData.web3Knowledge)) {
+      return NextResponse.json(
+        { error: 'Invalid web3 knowledge level selection' },
         { status: 400 }
       )
     }
