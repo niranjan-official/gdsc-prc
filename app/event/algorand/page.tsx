@@ -13,21 +13,6 @@ const AlgorandEventPage = () => {
   const [showRegistration, setShowRegistration] = useState(false)
   const [registrationClosed, setRegistrationClosed] = useState(true)
 
-  // useEffect(() => {
-  //   const fetchStatus = async () => {
-  //     try {
-  //       const res = await fetch('/api/registration-status', { cache: 'no-store' })
-  //       const data = await res.json()
-  //       console.log(data);
-        
-  //       setRegistrationClosed(!!data.closed)
-  //     } catch (e) {
-  //       // fail open in UI; server still enforces cap
-  //     }
-  //   }
-  //   fetchStatus()
-  // }, [])
-
   const eventDetails = [
     "Learn about Algorand's innovative blockchain technology",
     "Hands-on workshop with real-world applications",
